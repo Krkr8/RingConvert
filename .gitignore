@@ -1,0 +1,52 @@
+# Python caches and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env/
+
+# Build and packaging output
+build/
+dist/
+*.egg-info/
+*.egg
+*.whl
+*.zip
+*.tar.gz
+*.rpm
+
+# Test and tool artifacts
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.mypy_cache/
+.ruff_cache/
+*.log
+
+# Screenshots and renders made while testing (README pictures live in docs/screenshots/)
+/screenshots/
+/snapshots/
+/test-output/
+Screenshot*.png
+Screencast*.webm
+
+# Editors and OS clutter
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+
+# Private material that must never be published (kept outside the repo)
+/reference/
+/PROMPT.md
+
+# Local notes for AI coding sessions (not published)
+/CLAUDE.md

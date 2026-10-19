@@ -1,0 +1,16 @@
+[Desktop Entry]
+# SPDX-License-Identifier: GPL-3.0-or-later
+Type=Application
+Name=RingConvert
+GenericName=File Converter
+Comment=Drag a file onto the ring and drop it on a format to convert it
+Exec=ringconvert %U
+# "Open With": every type the rings handle (tests/test_install.py keeps it in sync).
+MimeType=application/pdf;image/png;image/jpeg;image/webp;image/heic;image/heif;image/avif;image/gif;image/bmp;image/x-bmp;image/tiff;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.oasis.opendocument.text;application/msword;application/rtf;text/rtf;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;application/vnd.oasis.opendocument.spreadsheet;application/vnd.ms-excel;text/csv;application/vnd.openxmlformats-officedocument.presentationml.presentation;application/vnd.oasis.opendocument.presentation;application/vnd.ms-powerpoint;text/markdown;text/x-markdown;text/html;text/plain;video/mp4;video/x-matroska;video/webm;video/quicktime;audio/mpeg;audio/mp4;audio/x-m4a;audio/wav;audio/x-wav;audio/vnd.wave;audio/ogg;audio/x-vorbis+ogg;audio/x-opus+ogg;audio/flac;audio/x-flac;
+Icon=io.github.ringconvert.RingConvert
+Terminal=false
+Categories=Utility;GTK;
+Keywords=convert;converter;pdf;image;jpg;png;heic;video;compress;
+StartupNotify=false
+# Started over D-Bus (Activate/Open/notification buttons); Exec stays as the fallback.
+DBusActivatable=true

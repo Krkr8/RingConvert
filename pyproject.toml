@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=77"]  # PEP 639 licence fields
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ringconvert"
+version = "0.1.0"
+description = "Drag a file, press Shift, drop it on a format: a radial file converter for GNOME"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+# PyGObject, Pillow, PyMuPDF and img2pdf come from Fedora packages (install.sh);
+# these are the pieces Fedora doesn't package.
+dependencies = [
+    "pdf2docx>=0.5.8",
+    "python-docx>=1.1",
+    "pillow-heif>=0.18",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+ringconvert-cli = "ringconvert.cli:main"
+
+[project.gui-scripts]
+ringconvert = "ringconvert.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ringconvert = ["*.css"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = ["slow: takes more than a few seconds (LibreOffice, video encoding)"]

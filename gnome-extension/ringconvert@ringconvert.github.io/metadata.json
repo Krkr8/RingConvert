@@ -1,0 +1,10 @@
+{
+  "uuid": "ringconvert@ringconvert.github.io",
+  "name": "RingConvert",
+  "description": "Drag a file and press Shift: the RingConvert ring opens at the cursor. Shift again switches to the tools ring. Needs the RingConvert app.",
+  "shell-version": [
+    "50"
+  ],
+  "version-name": "0.1.0",
+  "license": "GPL-3.0-or-later"
+}

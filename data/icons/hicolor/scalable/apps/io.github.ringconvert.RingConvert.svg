@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128">
+<defs>
+<filter id="filter-remove-color-and-invert-alpha" x="0%" y="0%" width="100%" height="100%">
+<feColorMatrix color-interpolation-filters="sRGB" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -1 1"/>
+</filter>
+<filter id="filter-0" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-1" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-2" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="atop" color-interpolation-filters="sRGB"/>
+</filter>
+<filter id="filter-1" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-3" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-4" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
+</filter>
+<filter id="filter-2" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-6" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-7" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="atop" color-interpolation-filters="sRGB"/>
+</filter>
+<filter id="filter-3" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-8" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-9" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
+</filter>
+<filter id="filter-4" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-11" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-12" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="atop" color-interpolation-filters="sRGB"/>
+</filter>
+<filter id="filter-5" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-13" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-14" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
+</filter>
+<filter id="filter-6" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-16" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-17" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="atop" color-interpolation-filters="sRGB"/>
+</filter>
+<filter id="filter-7" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-18" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-19" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
+</filter>
+<filter id="filter-8" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-21" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-22" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="atop" color-interpolation-filters="sRGB"/>
+</filter>
+<filter id="filter-9" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-23" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-24" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
+</filter>
+<filter id="filter-10" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-26" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-27" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="atop" color-interpolation-filters="sRGB"/>
+</filter>
+<filter id="filter-11" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-28" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-29" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
+</filter>
+<filter id="filter-12" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-31" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-32" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="atop" color-interpolation-filters="sRGB"/>
+</filter>
+<filter id="filter-13" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-33" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-34" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
+</filter>
+<filter id="filter-14" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-36" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-37" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="atop" color-interpolation-filters="sRGB"/>
+</filter>
+<filter id="filter-15" x="0%" y="0%" width="100%" height="100%">
+<feImage xlink:href="#compositing-group-38" result="source" x="0" y="0" width="221.184" height="221.184"/>
+<feImage xlink:href="#compositing-group-39" result="destination" x="0" y="0" width="221.184" height="221.184"/>
+<feComposite in="source" in2="destination" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" color-interpolation-filters="sRGB"/>
+</filter>
+<linearGradient id="linear-pattern-0" gradientUnits="userSpaceOnUse" x1="64" y1="4" x2="64" y2="124">
+<stop offset="0" stop-color="rgb(97%, 66%, 33%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(91%, 36%, 22%)" stop-opacity="1"/>
+</linearGradient>
+<clipPath id="clip-0">
+<path clip-rule="nonzero" d="M 0 0 L 128 0 L 128 128 L 0 128 Z M 0 0 "/>
+</clipPath>
+<linearGradient id="linear-pattern-1" gradientUnits="userSpaceOnUse" x1="64" y1="4" x2="64" y2="124">
+<stop offset="0" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0.7"/>
+<stop offset="1" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0.385"/>
+</linearGradient>
+<linearGradient id="linear-pattern-2" gradientUnits="userSpaceOnUse" x1="64" y1="7" x2="64" y2="39.1">
+<stop offset="0" stop-color="rgb(97.254902%, 83.921569%, 74.117647%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.901961%, 76.470588%, 63.921569%)" stop-opacity="1"/>
+</linearGradient>
+<linearGradient id="linear-pattern-3" gradientUnits="userSpaceOnUse" x1="64" y1="7" x2="64" y2="39.1">
+<stop offset="0" stop-color="rgb(97.254902%, 83.921569%, 74.117647%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.901961%, 76.470588%, 63.921569%)" stop-opacity="1"/>
+</linearGradient>
+<radialGradient id="radial-pattern-0" gradientUnits="userSpaceOnUse" cx="64" cy="64" fx="64" fy="64" r="57">
+<stop offset="0.831579" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0"/>
+<stop offset="1" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0.5"/>
+</radialGradient>
+<g id="compositing-group-0" transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
+<clipPath id="clip-1">
+<path clip-rule="nonzero" d="M 0 0 L 128 0 L 128 128 L 0 128 Z M 0 0 "/>
+</clipPath>
+<g clip-path="url(#clip-1)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</g>
+<mask id="mask-0">
+<use xlink:href="#compositing-group-0"/>
+</mask>
+<mask id="mask-1">
+<use xlink:href="#compositing-group-0" filter="url(#filter-remove-color-and-invert-alpha)"/>
+</mask>
+<mask id="mask-2">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</mask>
+<g id="compositing-group-1" mask="url(#mask-2)">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="url(#radial-pattern-0)"/>
+</g>
+</g>
+<g id="compositing-group-2" transform="translate(46.592, 46.592)">
+<path fill-rule="nonzero" fill="url(#linear-pattern-2)" stroke-width="13.2" stroke-linecap="butt" stroke-linejoin="round" stroke="url(#linear-pattern-3)" stroke-miterlimit="10" d="M 52.210938 15 C 59.960938 13.132812 68.039062 13.132812 75.789062 15 L 68.410156 32.808594 C 65.484375 32.398438 62.515625 32.398438 59.589844 32.808594 Z M 52.210938 15 "/>
+</g>
+<g id="compositing-group-3" filter="url(#filter-0)" mask="url(#mask-0)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+<g id="compositing-group-4" mask="url(#mask-1)">
+<use xlink:href="#compositing-group-2"/>
+</g>
+<clipPath id="clip-2">
+<rect x="0" y="0" width="128" height="128"/>
+</clipPath>
+<g id="source-6" clip-path="url(#clip-2)">
+<g filter="url(#filter-1)" transform="translate(-46.592, -46.592)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+</g>
+<linearGradient id="linear-pattern-4" gradientUnits="userSpaceOnUse" x1="104.305087" y1="23.694913" x2="81.606959" y2="46.393041">
+<stop offset="0" stop-color="rgb(97.254902%, 83.921569%, 74.117647%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.901961%, 76.470588%, 63.921569%)" stop-opacity="1"/>
+</linearGradient>
+<linearGradient id="linear-pattern-5" gradientUnits="userSpaceOnUse" x1="104.305087" y1="23.694913" x2="81.606959" y2="46.393041">
+<stop offset="0" stop-color="rgb(97.254902%, 83.921569%, 74.117647%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.901961%, 76.470588%, 63.921569%)" stop-opacity="1"/>
+</linearGradient>
+<radialGradient id="radial-pattern-1" gradientUnits="userSpaceOnUse" cx="64" cy="64" fx="64" fy="64" r="57">
+<stop offset="0.831579" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0"/>
+<stop offset="1" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0.5"/>
+</radialGradient>
+<g id="compositing-group-5" transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
+<clipPath id="clip-3">
+<path clip-rule="nonzero" d="M 0 0 L 128 0 L 128 128 L 0 128 Z M 0 0 "/>
+</clipPath>
+<g clip-path="url(#clip-3)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</g>
+<mask id="mask-3">
+<use xlink:href="#compositing-group-5"/>
+</mask>
+<mask id="mask-4">
+<use xlink:href="#compositing-group-5" filter="url(#filter-remove-color-and-invert-alpha)"/>
+</mask>
+<mask id="mask-5">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</mask>
+<g id="compositing-group-6" mask="url(#mask-5)">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="url(#radial-pattern-1)"/>
+</g>
+</g>
+<g id="compositing-group-7" transform="translate(46.592, 46.592)">
+<path fill-rule="nonzero" fill="url(#linear-pattern-4)" stroke-width="13.2" stroke-linecap="butt" stroke-linejoin="round" stroke="url(#linear-pattern-5)" stroke-miterlimit="10" d="M 90.3125 21.015625 C 97.109375 25.175781 102.824219 30.890625 106.984375 37.6875 L 89.171875 45.066406 C 87.398438 42.703125 85.296875 40.601562 82.933594 38.828125 Z M 90.3125 21.015625 "/>
+</g>
+<g id="compositing-group-8" filter="url(#filter-2)" mask="url(#mask-3)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+<g id="compositing-group-9" mask="url(#mask-4)">
+<use xlink:href="#compositing-group-7"/>
+</g>
+<clipPath id="clip-4">
+<rect x="0" y="0" width="128" height="128"/>
+</clipPath>
+<g id="source-9" clip-path="url(#clip-4)">
+<g filter="url(#filter-3)" transform="translate(-46.592, -46.592)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+</g>
+<linearGradient id="linear-pattern-6" gradientUnits="userSpaceOnUse" x1="121" y1="64" x2="88.9" y2="64">
+<stop offset="0" stop-color="rgb(97.254902%, 83.921569%, 74.117647%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.901961%, 76.470588%, 63.921569%)" stop-opacity="1"/>
+</linearGradient>
+<linearGradient id="linear-pattern-7" gradientUnits="userSpaceOnUse" x1="121" y1="64" x2="88.9" y2="64">
+<stop offset="0" stop-color="rgb(97.254902%, 83.921569%, 74.117647%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.901961%, 76.470588%, 63.921569%)" stop-opacity="1"/>
+</linearGradient>
+<radialGradient id="radial-pattern-2" gradientUnits="userSpaceOnUse" cx="64" cy="64" fx="64" fy="64" r="57">
+<stop offset="0.831579" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0"/>
+<stop offset="1" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0.5"/>
+</radialGradient>
+<g id="compositing-group-10" transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
+<clipPath id="clip-5">
+<path clip-rule="nonzero" d="M 0 0 L 128 0 L 128 128 L 0 128 Z M 0 0 "/>
+</clipPath>
+<g clip-path="url(#clip-5)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</g>
+<mask id="mask-6">
+<use xlink:href="#compositing-group-10"/>
+</mask>
+<mask id="mask-7">
+<use xlink:href="#compositing-group-10" filter="url(#filter-remove-color-and-invert-alpha)"/>
+</mask>
+<mask id="mask-8">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</mask>
+<g id="compositing-group-11" mask="url(#mask-8)">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="url(#radial-pattern-2)"/>
+</g>
+</g>
+<g id="compositing-group-12" transform="translate(46.592, 46.592)">
+<path fill-rule="nonzero" fill="url(#linear-pattern-6)" stroke-width="13.2" stroke-linecap="butt" stroke-linejoin="round" stroke="url(#linear-pattern-7)" stroke-miterlimit="10" d="M 113 52.210938 C 114.867188 59.960938 114.867188 68.039062 113 75.789062 L 95.191406 68.410156 C 95.601562 65.484375 95.601562 62.515625 95.191406 59.589844 Z M 113 52.210938 "/>
+</g>
+<g id="compositing-group-13" filter="url(#filter-4)" mask="url(#mask-6)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+<g id="compositing-group-14" mask="url(#mask-7)">
+<use xlink:href="#compositing-group-12"/>
+</g>
+<clipPath id="clip-6">
+<rect x="0" y="0" width="128" height="128"/>
+</clipPath>
+<g id="source-12" clip-path="url(#clip-6)">
+<g filter="url(#filter-5)" transform="translate(-46.592, -46.592)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+</g>
+<linearGradient id="linear-pattern-8" gradientUnits="userSpaceOnUse" x1="64" y1="121" x2="64" y2="88.9">
+<stop offset="0" stop-color="rgb(97.254902%, 83.921569%, 74.117647%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.901961%, 76.470588%, 63.921569%)" stop-opacity="1"/>
+</linearGradient>
+<linearGradient id="linear-pattern-9" gradientUnits="userSpaceOnUse" x1="64" y1="121" x2="64" y2="88.9">
+<stop offset="0" stop-color="rgb(97.254902%, 83.921569%, 74.117647%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.901961%, 76.470588%, 63.921569%)" stop-opacity="1"/>
+</linearGradient>
+<radialGradient id="radial-pattern-3" gradientUnits="userSpaceOnUse" cx="64" cy="64" fx="64" fy="64" r="57">
+<stop offset="0.831579" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0"/>
+<stop offset="1" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0.5"/>
+</radialGradient>
+<g id="compositing-group-15" transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
+<clipPath id="clip-7">
+<path clip-rule="nonzero" d="M 0 0 L 128 0 L 128 128 L 0 128 Z M 0 0 "/>
+</clipPath>
+<g clip-path="url(#clip-7)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</g>
+<mask id="mask-9">
+<use xlink:href="#compositing-group-15"/>
+</mask>
+<mask id="mask-10">
+<use xlink:href="#compositing-group-15" filter="url(#filter-remove-color-and-invert-alpha)"/>
+</mask>
+<mask id="mask-11">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</mask>
+<g id="compositing-group-16" mask="url(#mask-11)">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="url(#radial-pattern-3)"/>
+</g>
+</g>
+<g id="compositing-group-17" transform="translate(46.592, 46.592)">
+<path fill-rule="nonzero" fill="url(#linear-pattern-8)" stroke-width="13.2" stroke-linecap="butt" stroke-linejoin="round" stroke="url(#linear-pattern-9)" stroke-miterlimit="10" d="M 75.789062 113 C 68.039062 114.867188 59.960938 114.867188 52.210938 113 L 59.589844 95.191406 C 62.515625 95.601562 65.484375 95.601562 68.410156 95.191406 Z M 75.789062 113 "/>
+</g>
+<g id="compositing-group-18" filter="url(#filter-6)" mask="url(#mask-9)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+<g id="compositing-group-19" mask="url(#mask-10)">
+<use xlink:href="#compositing-group-17"/>
+</g>
+<clipPath id="clip-8">
+<rect x="0" y="0" width="128" height="128"/>
+</clipPath>
+<g id="source-15" clip-path="url(#clip-8)">
+<g filter="url(#filter-7)" transform="translate(-46.592, -46.592)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+</g>
+<linearGradient id="linear-pattern-10" gradientUnits="userSpaceOnUse" x1="23.694913" y1="104.305087" x2="46.393041" y2="81.606959">
+<stop offset="0" stop-color="rgb(97.254902%, 83.921569%, 74.117647%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.901961%, 76.470588%, 63.921569%)" stop-opacity="1"/>
+</linearGradient>
+<linearGradient id="linear-pattern-11" gradientUnits="userSpaceOnUse" x1="23.694913" y1="104.305087" x2="46.393041" y2="81.606959">
+<stop offset="0" stop-color="rgb(97.254902%, 83.921569%, 74.117647%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.901961%, 76.470588%, 63.921569%)" stop-opacity="1"/>
+</linearGradient>
+<radialGradient id="radial-pattern-4" gradientUnits="userSpaceOnUse" cx="64" cy="64" fx="64" fy="64" r="57">
+<stop offset="0.831579" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0"/>
+<stop offset="1" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0.5"/>
+</radialGradient>
+<g id="compositing-group-20" transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
+<clipPath id="clip-9">
+<path clip-rule="nonzero" d="M 0 0 L 128 0 L 128 128 L 0 128 Z M 0 0 "/>
+</clipPath>
+<g clip-path="url(#clip-9)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</g>
+<mask id="mask-12">
+<use xlink:href="#compositing-group-20"/>
+</mask>
+<mask id="mask-13">
+<use xlink:href="#compositing-group-20" filter="url(#filter-remove-color-and-invert-alpha)"/>
+</mask>
+<mask id="mask-14">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</mask>
+<g id="compositing-group-21" mask="url(#mask-14)">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="url(#radial-pattern-4)"/>
+</g>
+</g>
+<g id="compositing-group-22" transform="translate(46.592, 46.592)">
+<path fill-rule="nonzero" fill="url(#linear-pattern-10)" stroke-width="13.2" stroke-linecap="butt" stroke-linejoin="round" stroke="url(#linear-pattern-11)" stroke-miterlimit="10" d="M 37.6875 106.984375 C 30.890625 102.824219 25.175781 97.109375 21.015625 90.3125 L 38.828125 82.933594 C 40.601562 85.296875 42.703125 87.398438 45.066406 89.171875 Z M 37.6875 106.984375 "/>
+</g>
+<g id="compositing-group-23" filter="url(#filter-8)" mask="url(#mask-12)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+<g id="compositing-group-24" mask="url(#mask-13)">
+<use xlink:href="#compositing-group-22"/>
+</g>
+<clipPath id="clip-10">
+<rect x="0" y="0" width="128" height="128"/>
+</clipPath>
+<g id="source-18" clip-path="url(#clip-10)">
+<g filter="url(#filter-9)" transform="translate(-46.592, -46.592)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+</g>
+<linearGradient id="linear-pattern-12" gradientUnits="userSpaceOnUse" x1="7" y1="64" x2="39.1" y2="64">
+<stop offset="0" stop-color="rgb(97.254902%, 83.921569%, 74.117647%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.901961%, 76.470588%, 63.921569%)" stop-opacity="1"/>
+</linearGradient>
+<linearGradient id="linear-pattern-13" gradientUnits="userSpaceOnUse" x1="7" y1="64" x2="39.1" y2="64">
+<stop offset="0" stop-color="rgb(97.254902%, 83.921569%, 74.117647%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.901961%, 76.470588%, 63.921569%)" stop-opacity="1"/>
+</linearGradient>
+<radialGradient id="radial-pattern-5" gradientUnits="userSpaceOnUse" cx="64" cy="64" fx="64" fy="64" r="57">
+<stop offset="0.831579" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0"/>
+<stop offset="1" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0.5"/>
+</radialGradient>
+<g id="compositing-group-25" transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
+<clipPath id="clip-11">
+<path clip-rule="nonzero" d="M 0 0 L 128 0 L 128 128 L 0 128 Z M 0 0 "/>
+</clipPath>
+<g clip-path="url(#clip-11)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</g>
+<mask id="mask-15">
+<use xlink:href="#compositing-group-25"/>
+</mask>
+<mask id="mask-16">
+<use xlink:href="#compositing-group-25" filter="url(#filter-remove-color-and-invert-alpha)"/>
+</mask>
+<mask id="mask-17">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</mask>
+<g id="compositing-group-26" mask="url(#mask-17)">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="url(#radial-pattern-5)"/>
+</g>
+</g>
+<g id="compositing-group-27" transform="translate(46.592, 46.592)">
+<path fill-rule="nonzero" fill="url(#linear-pattern-12)" stroke-width="13.2" stroke-linecap="butt" stroke-linejoin="round" stroke="url(#linear-pattern-13)" stroke-miterlimit="10" d="M 15 75.789062 C 13.132812 68.039062 13.132812 59.960938 15 52.210938 L 32.808594 59.589844 C 32.398438 62.515625 32.398438 65.484375 32.808594 68.410156 Z M 15 75.789062 "/>
+</g>
+<g id="compositing-group-28" filter="url(#filter-10)" mask="url(#mask-15)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+<g id="compositing-group-29" mask="url(#mask-16)">
+<use xlink:href="#compositing-group-27"/>
+</g>
+<clipPath id="clip-12">
+<rect x="0" y="0" width="128" height="128"/>
+</clipPath>
+<g id="source-21" clip-path="url(#clip-12)">
+<g filter="url(#filter-11)" transform="translate(-46.592, -46.592)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+</g>
+<linearGradient id="linear-pattern-14" gradientUnits="userSpaceOnUse" x1="23.694913" y1="23.694913" x2="46.393041" y2="46.393041">
+<stop offset="0" stop-color="rgb(97.254902%, 83.921569%, 74.117647%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.901961%, 76.470588%, 63.921569%)" stop-opacity="1"/>
+</linearGradient>
+<linearGradient id="linear-pattern-15" gradientUnits="userSpaceOnUse" x1="23.694913" y1="23.694913" x2="46.393041" y2="46.393041">
+<stop offset="0" stop-color="rgb(97.254902%, 83.921569%, 74.117647%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.901961%, 76.470588%, 63.921569%)" stop-opacity="1"/>
+</linearGradient>
+<radialGradient id="radial-pattern-6" gradientUnits="userSpaceOnUse" cx="64" cy="64" fx="64" fy="64" r="57">
+<stop offset="0.831579" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0"/>
+<stop offset="1" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0.5"/>
+</radialGradient>
+<g id="compositing-group-30" transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
+<clipPath id="clip-13">
+<path clip-rule="nonzero" d="M 0 0 L 128 0 L 128 128 L 0 128 Z M 0 0 "/>
+</clipPath>
+<g clip-path="url(#clip-13)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</g>
+<mask id="mask-18">
+<use xlink:href="#compositing-group-30"/>
+</mask>
+<mask id="mask-19">
+<use xlink:href="#compositing-group-30" filter="url(#filter-remove-color-and-invert-alpha)"/>
+</mask>
+<mask id="mask-20">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</mask>
+<g id="compositing-group-31" mask="url(#mask-20)">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="url(#radial-pattern-6)"/>
+</g>
+</g>
+<g id="compositing-group-32" transform="translate(46.592, 46.592)">
+<path fill-rule="nonzero" fill="url(#linear-pattern-14)" stroke-width="13.2" stroke-linecap="butt" stroke-linejoin="round" stroke="url(#linear-pattern-15)" stroke-miterlimit="10" d="M 21.015625 37.6875 C 25.175781 30.890625 30.890625 25.175781 37.6875 21.015625 L 45.066406 38.828125 C 42.703125 40.601562 40.601562 42.703125 38.828125 45.066406 Z M 21.015625 37.6875 "/>
+</g>
+<g id="compositing-group-33" filter="url(#filter-12)" mask="url(#mask-18)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+<g id="compositing-group-34" mask="url(#mask-19)">
+<use xlink:href="#compositing-group-32"/>
+</g>
+<clipPath id="clip-14">
+<rect x="0" y="0" width="128" height="128"/>
+</clipPath>
+<g id="source-24" clip-path="url(#clip-14)">
+<g filter="url(#filter-13)" transform="translate(-46.592, -46.592)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+</g>
+<linearGradient id="linear-pattern-16" gradientUnits="userSpaceOnUse" x1="104.305087" y1="104.305087" x2="81.606959" y2="81.606959" gradientTransform="matrix(1, 0, 0, 1, -0.000000000000000888, -0.000000000000000888)">
+<stop offset="0" stop-color="rgb(90.980392%, 27.45098%, 16.470588%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.117647%, 35.294118%, 15.686275%)" stop-opacity="1"/>
+</linearGradient>
+<linearGradient id="linear-pattern-17" gradientUnits="userSpaceOnUse" x1="104.305087" y1="104.305087" x2="81.606959" y2="81.606959" gradientTransform="matrix(1, 0, 0, 1, -0.000000000000000888, -0.000000000000000888)">
+<stop offset="0" stop-color="rgb(90.980392%, 27.45098%, 16.470588%)" stop-opacity="1"/>
+<stop offset="1" stop-color="rgb(94.117647%, 35.294118%, 15.686275%)" stop-opacity="1"/>
+</linearGradient>
+<radialGradient id="radial-pattern-7" gradientUnits="userSpaceOnUse" cx="64" cy="64" fx="64" fy="64" r="57" gradientTransform="matrix(1.045, 0, 0, 1.045, -4.202113, -4.202113)">
+<stop offset="0.831579" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0"/>
+<stop offset="1" stop-color="rgb(100%, 100%, 100%)" stop-opacity="0.18"/>
+</radialGradient>
+<g id="compositing-group-35" transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="0"/>
+<clipPath id="clip-15">
+<path clip-rule="nonzero" d="M 0 0 L 128 0 L 128 128 L 0 128 Z M 0 0 "/>
+</clipPath>
+<g clip-path="url(#clip-15)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</g>
+<mask id="mask-21">
+<use xlink:href="#compositing-group-35"/>
+</mask>
+<mask id="mask-22">
+<use xlink:href="#compositing-group-35" filter="url(#filter-remove-color-and-invert-alpha)"/>
+</mask>
+<mask id="mask-23">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="rgb(100%, 100%, 100%)" fill-opacity="1"/>
+</g>
+</mask>
+<g id="compositing-group-36" mask="url(#mask-23)">
+<g transform="translate(46.592, 46.592)">
+<rect x="-46.592" y="-46.592" width="221.184" height="221.184" fill="url(#radial-pattern-7)"/>
+</g>
+</g>
+<g id="compositing-group-37" transform="translate(46.592, 46.592)">
+<path fill-rule="nonzero" fill="url(#linear-pattern-16)" stroke-width="13.2" stroke-linecap="butt" stroke-linejoin="round" stroke="url(#linear-pattern-17)" stroke-miterlimit="10" d="M 106.985425 90.313774 C 102.824988 97.109528 97.109528 102.824988 90.313774 106.985425 L 82.934887 89.173673 C 85.297327 87.398104 87.398104 85.297327 89.173673 82.934887 Z M 106.985425 90.313774 " transform="matrix(1.045, 0, 0, 1.045, -4.202113, -4.202113)"/>
+</g>
+<g id="compositing-group-38" filter="url(#filter-14)" mask="url(#mask-21)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+<g id="compositing-group-39" mask="url(#mask-22)">
+<use xlink:href="#compositing-group-37"/>
+</g>
+<clipPath id="clip-16">
+<rect x="0" y="0" width="128" height="128"/>
+</clipPath>
+<g id="source-28" clip-path="url(#clip-16)">
+<g filter="url(#filter-15)" transform="translate(-46.592, -46.592)">
+<rect x="0" y="0" width="221.184" height="221.184" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+</g>
+<linearGradient id="linear-pattern-18" gradientUnits="userSpaceOnUse" x1="64" y1="42.4" x2="64" y2="85.6">
+<stop offset="0" stop-color="rgb(100%, 98%, 96%)" stop-opacity="0.62"/>
+<stop offset="1" stop-color="rgb(100%, 98%, 96%)" stop-opacity="0.31"/>
+</linearGradient>
+<clipPath id="clip-17">
+<rect x="0" y="0" width="128" height="128"/>
+</clipPath>
+<g id="source-30" clip-path="url(#clip-17)">
+<path fill-rule="nonzero" fill="url(#linear-pattern-0)" d="M 124 64 C 124 97.136719 97.136719 124 64 124 C 30.863281 124 4 97.136719 4 64 C 4 30.863281 30.863281 4 64 4 C 97.136719 4 124 30.863281 124 64 "/>
+<g clip-path="url(#clip-0)">
+<path fill="none" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke="url(#linear-pattern-1)" stroke-miterlimit="10" d="M 123.25 64 C 123.25 96.722656 96.722656 123.25 64 123.25 C 31.277344 123.25 4.75 96.722656 4.75 64 C 4.75 31.277344 31.277344 4.75 64 4.75 C 96.722656 4.75 123.25 31.277344 123.25 64 "/>
+</g>
+<use xlink:href="#source-6"/>
+<use xlink:href="#source-9"/>
+<use xlink:href="#source-12"/>
+<use xlink:href="#source-15"/>
+<use xlink:href="#source-18"/>
+<use xlink:href="#source-21"/>
+<use xlink:href="#source-24"/>
+<use xlink:href="#source-28" transform="matrix(1, 0, 0, 1, 0.000000000000001776, 0.000000000000001776)"/>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="0.22" d="M 85.601562 64 C 85.601562 75.929688 75.929688 85.601562 64 85.601562 C 52.070312 85.601562 42.398438 75.929688 42.398438 64 C 42.398438 52.070312 52.070312 42.398438 64 42.398438 C 75.929688 42.398438 85.601562 52.070312 85.601562 64 "/>
+<path fill="none" stroke-width="2.52" stroke-linecap="butt" stroke-linejoin="miter" stroke="url(#linear-pattern-18)" stroke-miterlimit="10" d="M 84.339844 64 C 84.339844 75.234375 75.234375 84.339844 64 84.339844 C 52.765625 84.339844 43.660156 75.234375 43.660156 64 C 43.660156 52.765625 52.765625 43.660156 64 43.660156 C 75.234375 43.660156 84.339844 52.765625 84.339844 64 "/>
+</g>
+</defs>
+<use xlink:href="#source-30"/>
+</svg>

@@ -1,0 +1,243 @@
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+/* The ring window is fully transparent: the ring draws its own glass disc. */
+window.ringconvert-ring,
+window.ringconvert-ring.background {
+  background: none;
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  outline: none;
+}
+
+/* ------------------------------------------------------------------ dialogs
+ * Warm floating panels: amber header fading into a
+ * peach body, dark text, compact controls, orange primary button. Colours are
+ * fixed so the panels keep their warm look in dark mode too.
+ */
+window.ringconvert-dialog {
+  border-radius: 16px;
+  color: #3a2a22;
+  background-color: #fbcdb7;
+}
+.ringconvert-dialog .dialog-panel {
+  background-color: #fbc8ae;
+  background-image: linear-gradient(180deg, #fcc468 0px, #fbb487 64px, #fabd9f 240px, #fac6ae 100%);
+}
+
+.ringconvert-dialog .dialog-header {
+  min-height: 44px;
+  padding: 0 12px;
+}
+
+.ringconvert-dialog .dialog-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: #3a2a22;
+}
+
+.ringconvert-dialog button.dialog-close {
+  min-width: 26px;
+  min-height: 26px;
+  padding: 0;
+  border-radius: 999px;
+  background: alpha(#7a3a1a, 0.12);
+  color: #3a2a22;
+  box-shadow: none;
+  -gtk-icon-size: 12px;
+}
+.ringconvert-dialog button.dialog-close:hover { background: alpha(#7a3a1a, 0.22); }
+
+.ringconvert-dialog .preview-well {
+  padding: 18px 16px;
+  background: alpha(#ffffff, 0.14);
+  border-top: 1px solid alpha(#7a3a1a, 0.08);
+  border-bottom: 1px solid alpha(#7a3a1a, 0.08);
+}
+
+.ringconvert-dialog .bg-preview { border-radius: 10px; }
+
+.ringconvert-dialog .dialog-controls {
+  padding: 12px 18px 14px;
+}
+.ringconvert-dialog .dialog-row { min-height: 34px; }
+.ringconvert-dialog .dialog-caption {
+  font-size: 13px;
+  color: alpha(#3a2a22, 0.82);
+}
+.ringconvert-dialog .slider-value {
+  font-size: 12px;
+  font-feature-settings: "tnum";
+  color: alpha(#3a2a22, 0.75);
+}
+
+.ringconvert-dialog .dialog-footer {
+  padding: 10px 14px 12px;
+  border-top: 1px solid alpha(#7a3a1a, 0.10);
+  background: alpha(#ffffff, 0.10);
+}
+
+.ringconvert-dialog button.dialog-secondary,
+.ringconvert-dialog button.dialog-primary {
+  min-height: 26px;
+  padding: 2px 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  box-shadow: none;
+}
+.ringconvert-dialog button.dialog-secondary {
+  background: alpha(#7a3a1a, 0.12);
+  color: alpha(#3a2a22, 0.85);
+}
+.ringconvert-dialog button.dialog-secondary:hover { background: alpha(#7a3a1a, 0.2); }
+.ringconvert-dialog button.dialog-primary {
+  font-weight: 600;
+  color: #ffffff;
+  background-image: linear-gradient(180deg, #f2622f, #e8462a);
+  box-shadow: 0 1px 2px alpha(#7a2a0a, 0.3);
+}
+.ringconvert-dialog button.dialog-primary:hover { background-image: linear-gradient(180deg, #f67040, #ec5030); }
+.ringconvert-dialog button.dialog-primary:active { background-image: linear-gradient(180deg, #e04424, #d63c20); }
+
+/* Segmented control: a tinted track, the active option a solid orange pill. */
+.ringconvert-dialog .segmented {
+  padding: 2px;
+  border-radius: 8px;
+  background: alpha(#7a3a1a, 0.13);
+}
+.ringconvert-dialog .segmented > button {
+  min-height: 22px;
+  min-width: 34px;
+  padding: 0 10px;
+  margin: 0;
+  border-radius: 6px;
+  font-size: 12px;
+  color: alpha(#3a2a22, 0.85);
+  background: none;
+  box-shadow: none;
+}
+.ringconvert-dialog .segmented > button:hover { background: alpha(#ffffff, 0.25); }
+/* Hairline separators between options, hidden next to the active one. */
+.ringconvert-dialog .segmented > button:not(:first-child) {
+  box-shadow: inset 1px 0 alpha(#7a3a1a, 0.18);
+}
+.ringconvert-dialog .segmented > button:checked + button { box-shadow: none; }
+.ringconvert-dialog .segmented > button:checked {
+  color: #ffffff;
+  font-weight: 600;
+  background: #e8462a;
+  box-shadow: 0 1px 2px alpha(#7a2a0a, 0.3);
+}
+
+/* Numeric fields (crop W/H): small white rounded boxes. */
+.ringconvert-dialog entry.num-field {
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 6px;
+  background: alpha(#ffffff, 0.85);
+  color: #3a2a22;
+  box-shadow: inset 0 0 0 1px alpha(#7a3a1a, 0.12);
+  outline-color: alpha(#e8462a, 0.6);
+}
+
+/* Sliders: orange fill on a pale track, white knob. */
+.ringconvert-dialog scale { padding: 8px 0; }
+.ringconvert-dialog scale trough {
+  min-height: 4px;
+  border-radius: 2px;
+  background: alpha(#ffffff, 0.6);
+}
+.ringconvert-dialog scale highlight {
+  border-radius: 2px;
+  background: #e8462a;
+}
+.ringconvert-dialog scale slider {
+  min-width: 18px;
+  min-height: 18px;
+  margin: -8px;
+  border-radius: 999px;
+  background: #fffaf6;
+  box-shadow: 0 1px 3px alpha(#5a2a0a, 0.35);
+  outline: none;
+}
+
+/* Background swatches. */
+.ringconvert-dialog button.swatch {
+  min-width: 28px;
+  min-height: 28px;
+  padding: 0;
+  border-radius: 7px;
+  box-shadow: inset 0 0 0 1px alpha(#000000, 0.08);
+}
+.ringconvert-dialog button.swatch.selected {
+  box-shadow: 0 0 0 2px #fac2a8, 0 0 0 4px alpha(#3a2a22, 0.85);
+}
+.ringconvert-dialog button.swatch-image {
+  background: alpha(#ffffff, 0.55);
+  color: #3a2a22;
+}
+.ringconvert-dialog button.swatch-color {
+  min-width: 40px;
+  border-radius: 999px;
+  background-image: conic-gradient(#e8462a, #f2c94c, #6fcf97, #2f80ed, #9b51e0, #e8462a);
+}
+.ringconvert-dialog button.swatch-color.custom,
+.ringconvert-dialog button.swatch-color.picked { background-image: none; }
+
+/* Small icon buttons (rotate, flip, undo, page arrows). */
+.ringconvert-dialog button.dialog-icon {
+  min-width: 28px;
+  min-height: 26px;
+  padding: 0 6px;
+  border-radius: 7px;
+  color: #3a2a22;
+  background: alpha(#7a3a1a, 0.12);
+  box-shadow: none;
+}
+.ringconvert-dialog button.dialog-icon:hover { background: alpha(#7a3a1a, 0.2); }
+.ringconvert-dialog button.dialog-icon:checked {
+  color: #ffffff;
+  background: #e8462a;
+}
+.ringconvert-dialog button.dialog-icon:disabled { opacity: 0.45; }
+.ringconvert-dialog separator { background: alpha(#7a3a1a, 0.15); margin: 3px 2px; }
+
+.ringconvert-dialog .dialog-note {
+  font-size: 12px;
+  color: alpha(#3a2a22, 0.7);
+}
+.ringconvert-dialog button.dialog-primary:disabled {
+  color: alpha(#ffffff, 0.8);
+  background-image: linear-gradient(180deg, alpha(#f2622f, 0.45), alpha(#e8462a, 0.45));
+  box-shadow: none;
+}
+.ringconvert-dialog .page-nav { margin-top: 2px; }
+
+/* Metadata list: a white card with hairline rows. */
+.ringconvert-dialog .meta-file { font-weight: 700; font-size: 14px; }
+.ringconvert-dialog .tag-scroller {
+  border-radius: 10px;
+  background: alpha(#ffffff, 0.6);
+  box-shadow: inset 0 0 0 1px alpha(#7a3a1a, 0.1);
+}
+.ringconvert-dialog list.tag-list { background: none; color: #3a2a22; }
+.ringconvert-dialog list.tag-list > row { padding: 0; }
+.ringconvert-dialog list.tag-list > row:not(:last-child) { border-bottom: 1px solid alpha(#7a3a1a, 0.08); }
+.ringconvert-dialog .tag-row { padding: 6px 12px; }
+.ringconvert-dialog .tag-name { font-weight: 600; font-size: 12px; }
+.ringconvert-dialog .tag-group { font-size: 11px; color: alpha(#3a2a22, 0.55); }
+.ringconvert-dialog .tag-value { font-size: 12px; color: alpha(#3a2a22, 0.9); }
+.ringconvert-dialog list.tag-list > label { padding: 24px; }
+
+/* The text popover in Annotate. */
+popover.annotate-text > contents {
+  padding: 6px;
+  border-radius: 10px;
+  background: #fbd3bd;
+  color: #3a2a22;
+}
+popover.annotate-text entry.num-field {
+  min-height: 26px;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #3a2a22;
+}

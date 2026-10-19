@@ -1,0 +1,12 @@
+[Desktop Entry]
+# SPDX-License-Identifier: GPL-3.0-or-later
+Type=Application
+Name=RingConvert
+Comment=Keeps RingConvert ready in the background
+# install.sh rewrites the path to the installed command.
+Exec=ringconvert --service
+Icon=io.github.ringconvert.RingConvert
+NoDisplay=true
+Terminal=false
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Phase=Applications
