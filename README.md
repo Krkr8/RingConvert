@@ -167,8 +167,8 @@ ringconvert --quit     # stop the background service
   AVIF loses transparency.
 - PDF to DOCX keeps the text and layout as well as pdf2docx can; scanned PDFs have no text to
   extract.
-- The ring keeps its warm colours in dark mode. `RINGCONVERT_THEME=system` switches to a darker
-  palette.
+- The ring is black smoked glass in light and dark mode. `RINGCONVERT_THEME=warm` brings back
+  the original cream-peach ring with orange hover.
 
 ## Uninstall
 

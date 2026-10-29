@@ -47,18 +47,48 @@ class Palette:
     segment_highlight: RGBA
     segment_alpha: float
     segment_edge: RGBA
+    segment_glint_top: RGBA  # bright inner hairline of a petal, top and bottom of the ring
+    segment_glint_bottom: RGBA
     text: RGBA
     hover_start: RGBA
     hover_end: RGBA
     hover_text: RGBA
+    hover_highlight: RGBA  # sheen on the hovered petal (the pulse adds to its alpha)
     hub_fill: RGBA
     hub_border: RGBA
     pill_fill: RGBA
+    pill_edge: RGBA
     pill_text: RGBA
     progress: RGBA
 
 
-# The default look: milky glass, cream-peach petals, orange-red hover.
+# The default look: black smoked glass, graphite petals, bright glass on hover.
+SMOKE = Palette(
+    disc_top=(0.08, 0.08, 0.09, 0.84),
+    disc_bottom=(0.03, 0.03, 0.04, 0.88),
+    disc_border=(1.0, 1.0, 1.0, 0.18),
+    shadow=(0.0, 0.0, 0.0, 0.45),
+    segment_top=hex_rgba("#2a2a2e"),
+    segment_bottom=hex_rgba("#1b1b1f"),
+    segment_highlight=(1.0, 1.0, 1.0, 0.08),
+    segment_alpha=0.92,
+    segment_edge=(0.0, 0.0, 0.0, 0.55),
+    segment_glint_top=(1.0, 1.0, 1.0, 0.22),
+    segment_glint_bottom=(1.0, 1.0, 1.0, 0.07),
+    text=hex_rgba("#f2f2f2"),
+    hover_start=hex_rgba("#f4f4f5"),
+    hover_end=hex_rgba("#d4d4d8"),
+    hover_text=hex_rgba("#111113"),
+    hover_highlight=(1.0, 1.0, 1.0, 0.30),
+    hub_fill=(1.0, 1.0, 1.0, 0.03),
+    hub_border=(1.0, 1.0, 1.0, 0.16),
+    pill_fill=(0.17, 0.17, 0.19, 0.92),
+    pill_edge=(1.0, 1.0, 1.0, 0.18),
+    pill_text=hex_rgba("#f2f2f2"),
+    progress=(1.0, 1.0, 1.0, 0.95),
+)
+
+# The original look (RINGCONVERT_THEME=warm): milky glass, cream-peach petals, orange-red hover.
 WARM = Palette(
     disc_top=(0.95, 0.80, 0.64, 0.40),
     disc_bottom=(0.90, 0.70, 0.55, 0.36),
@@ -69,37 +99,19 @@ WARM = Palette(
     segment_highlight=(1.0, 1.0, 1.0, 0.30),
     segment_alpha=0.95,
     segment_edge=(0.55, 0.30, 0.12, 0.22),
+    segment_glint_top=(1.0, 1.0, 1.0, 0.55),
+    segment_glint_bottom=(1.0, 1.0, 1.0, 0.25),
     text=hex_rgba("#3a2a22"),
     hover_start=hex_rgba("#e8462a"),
     hover_end=hex_rgba("#f05a28"),
     hover_text=(1.0, 1.0, 1.0, 1.0),
+    hover_highlight=(1.0, 1.0, 1.0, 0.18),
     hub_fill=(1.0, 0.96, 0.90, 0.08),
     hub_border=(1.0, 0.95, 0.88, 0.70),
     pill_fill=(1.0, 0.97, 0.94, 0.82),
+    pill_edge=(1.0, 1.0, 1.0, 0.7 * 0.82),
     pill_text=hex_rgba("#3a2a22"),
     progress=hex_rgba("#e8462a"),
-)
-
-# Dark-mode variant (opt-in via RINGCONVERT_THEME=system): same warmth, smoked glass.
-DARK = Palette(
-    disc_top=(0.20, 0.15, 0.13, 0.62),
-    disc_bottom=(0.14, 0.10, 0.09, 0.56),
-    disc_border=(1.0, 0.85, 0.75, 0.28),
-    shadow=(0.0, 0.0, 0.0, 0.40),
-    segment_top=hex_rgba("#5a4135"),
-    segment_bottom=hex_rgba("#4a342a"),
-    segment_highlight=(1.0, 0.85, 0.75, 0.22),
-    segment_alpha=0.92,
-    segment_edge=(0.0, 0.0, 0.0, 0.30),
-    text=hex_rgba("#f6d2b8"),
-    hover_start=hex_rgba("#e8462a"),
-    hover_end=hex_rgba("#f05a28"),
-    hover_text=(1.0, 1.0, 1.0, 1.0),
-    hub_fill=(1.0, 0.85, 0.75, 0.06),
-    hub_border=(1.0, 0.85, 0.75, 0.30),
-    pill_fill=(0.30, 0.22, 0.19, 0.85),
-    pill_text=hex_rgba("#f6d2b8"),
-    progress=hex_rgba("#f05a28"),
 )
 
 FONT_FAMILY = "Adwaita Sans, Cantarell, Inter, Noto Sans, sans-serif"
@@ -204,7 +216,7 @@ class RingState:
 
 
 class RingPainter:
-    def __init__(self, geometry: Geometry | None = None, palette: Palette = WARM):
+    def __init__(self, geometry: Geometry | None = None, palette: Palette = SMOKE):
         self.geo = geometry or Geometry()
         self.palette = palette
 
@@ -275,8 +287,8 @@ class RingPainter:
         cr.clip_preserve()
         cr.set_line_width(max(2.0, g.radius * 0.016))
         edge = cairo.LinearGradient(cx, cy - g.outer, cx, cy + g.outer)
-        edge.add_color_stop_rgba(0, 1, 1, 1, 0.55)
-        edge.add_color_stop_rgba(1, 1, 1, 1, 0.25)
+        edge.add_color_stop_rgba(0, *self.palette.segment_glint_top)
+        edge.add_color_stop_rgba(1, *self.palette.segment_glint_bottom)
         cr.set_source(edge)
         cr.stroke()
         cr.restore()
@@ -409,7 +421,8 @@ class RingPainter:
 
         if h > 0:
             cr.push_group()
-            self._fill_segment(cr, count, i, p.hover_start, p.hover_end, (1, 1, 1, 0.18 + 0.3 * pulse))
+            sheen = p.hover_highlight[:3] + (p.hover_highlight[3] + 0.3 * pulse,)
+            self._fill_segment(cr, count, i, p.hover_start, p.hover_end, sheen)
             cr.pop_group_to_source()
             cr.paint_with_alpha(h)
 
@@ -488,7 +501,7 @@ class RingPainter:
         sheen.add_color_stop_rgba(1, *p.pill_fill[:3], p.pill_fill[3] - 0.08)
         cr.set_source(sheen)
         cr.fill_preserve()
-        cr.set_source_rgba(1, 1, 1, 0.7 * p.pill_fill[3])
+        cr.set_source_rgba(*p.pill_edge)
         cr.set_line_width(max(1.0, g.radius * 0.006))
         cr.stroke()
         layout.set_width(int((width - height * 0.5) * Pango.SCALE))

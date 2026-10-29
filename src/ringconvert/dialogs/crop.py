@@ -11,7 +11,7 @@ import cairo
 import gi
 
 gi.require_version("Gtk", "4.0")
-from gi.repository import Gdk, Gtk  # noqa: E402
+from gi.repository import Gtk  # noqa: E402
 
 from ..core import imageops  # noqa: E402
 from . import Segmented, ToolDialog, preview_copy, row, to_surface  # noqa: E402

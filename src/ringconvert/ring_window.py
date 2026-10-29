@@ -9,17 +9,16 @@ from pathlib import Path
 import cairo
 import gi
 
-gi.require_version("Adw", "1")
 gi.require_version("Gdk", "4.0")
 gi.require_version("Gtk", "4.0")
-from gi.repository import Adw, Gdk, Gio, GLib, GObject, Gtk  # noqa: E402
+from gi.repository import Gdk, Gio, GLib, GObject, Gtk  # noqa: E402
 
 from .core import compress  # noqa: E402
 from .core.detect import ALL_TOOLS, FileInfo, common_targets, common_tools, detect, label  # noqa: E402
 from .core.naming import Result  # noqa: E402
 from .debug import debug  # noqa: E402
 from .dialogs import DIALOGS  # noqa: E402
-from .ring_widget import DARK, WARM, RingPainter, RingWidget, Segment  # noqa: E402
+from .ring_widget import SMOKE, WARM, RingPainter, RingWidget, Segment  # noqa: E402
 
 # Detecting a huge selection would stall the drag; the menu only needs a sample.
 MAX_DETECT = 200
@@ -59,11 +58,10 @@ def _file_list(value) -> list[Gio.File] | None:
 
 
 def _palette():
-    # The warm look is the default even in dark mode;
-    # RINGCONVERT_THEME=system follows the desktop's light/dark preference.
-    if os.environ.get("RINGCONVERT_THEME") == "system" and Adw.StyleManager.get_default().get_dark():
-        return DARK
-    return WARM
+    # Black smoked glass in light and dark mode; RINGCONVERT_THEME=warm brings back the peach look.
+    if os.environ.get("RINGCONVERT_THEME") == "warm":
+        return WARM
+    return SMOKE
 
 
 class RingWindow(Gtk.Window):

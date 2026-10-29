@@ -38,13 +38,12 @@ def test_gaps_belong_to_a_segment():
     assert geo.hit(*point(geo, -90 + 22.5, geo.label_radius), 8) in (0, 1)
 
 
-def test_render_hover_is_orange(tmp_path):
+def _render_pixels(tmp_path, palette):
     segs = [Segment(k, k.upper()) for k in ("png", "webp", "heic", "gif")]
     state = RingState(segments=segs, hover=[0, 1, 0, 0], readout="WEBP")
     out = tmp_path / "ring.png"
-    ring_widget.render_png(str(out), state)
+    ring_widget.render_png(str(out), state, ring_widget.RingPainter(palette=palette))
     surface = cairo.ImageSurface.create_from_png(str(out))
-    geo = Geometry()
     data, stride = surface.get_data(), surface.get_stride()
 
     def pixel(x, y):  # premultiplied BGRA
@@ -52,14 +51,40 @@ def test_render_hover_is_orange(tmp_path):
         b, g, r, a = data[i:i + 4]
         return r, g, b, a
 
-    # Inside the hovered (right-hand) petal, away from its label.
-    r, g, b, a = pixel(*point(geo, 0, geo.outer - geo.radius * 0.08))
+    geo = Geometry()
+    # Inside the hovered (right-hand) petal and a resting one, away from their labels.
+    hovered = pixel(*point(geo, 0, geo.outer - geo.radius * 0.08))
+    resting = pixel(*point(geo, 180, geo.outer - geo.radius * 0.08))
+    return hovered, resting, pixel(1, 1)
+
+
+def test_render_smoke_is_black_with_bright_hover(tmp_path):
+    hovered, resting, corner = _render_pixels(tmp_path, ring_widget.SMOKE)
+    r, g, b, a = hovered
+    assert min(r, g, b) > 200 and max(r, g, b) - min(r, g, b) < 12 and a > 240
+    r, g, b, a = resting
+    assert max(r, g, b) < 70 and max(r, g, b) - min(r, g, b) < 12 and a > 230
+    # Corners of the window stay fully transparent.
+    assert corner[3] == 0
+
+
+def test_render_warm_hover_is_orange(tmp_path):
+    hovered, resting, corner = _render_pixels(tmp_path, ring_widget.WARM)
+    r, g, b, a = hovered
     assert r > 200 and g < 120 and b < 80 and a > 240
     # A resting petal is light peach.
-    r, g, b, a = pixel(*point(geo, 180, geo.outer - geo.radius * 0.08))
+    r, g, b, a = resting
     assert r > 180 and g > 150 and b > 120
-    # Corners of the window stay fully transparent.
-    assert pixel(1, 1)[3] == 0
+    assert corner[3] == 0
+
+
+def test_default_palette_is_smoke(monkeypatch):
+    ring_window = pytest.importorskip("ringconvert.ring_window")
+    monkeypatch.delenv("RINGCONVERT_THEME", raising=False)
+    assert ring_window._palette() is ring_widget.SMOKE
+    assert ring_widget.RingPainter().palette is ring_widget.SMOKE
+    monkeypatch.setenv("RINGCONVERT_THEME", "warm")
+    assert ring_window._palette() is ring_widget.WARM
 
 
 def test_tool_icons_render(tmp_path):
