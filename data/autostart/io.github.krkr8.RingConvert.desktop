@@ -5,7 +5,7 @@ Name=RingConvert
 Comment=Keeps RingConvert ready in the background
 # install.sh rewrites the path to the installed command.
 Exec=ringconvert --service
-Icon=io.github.ringconvert.RingConvert
+Icon=io.github.krkr8.RingConvert
 NoDisplay=true
 Terminal=false
 X-GNOME-Autostart-enabled=true

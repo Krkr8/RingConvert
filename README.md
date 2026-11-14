@@ -4,7 +4,9 @@ A file converter for the GNOME desktop that lives under your cursor. Drag a file
 and a ring of formats opens where you are. Drop the file on a format and the converted copy appears
 next to the original. A second ring holds quick tools: compress, crop, redact and more.
 
-Made for **Fedora 44 Workstation with GNOME 50 on Wayland**.
+Made for **Fedora 44–45 Workstation with GNOME 50–51 on Wayland**.
+Latest release: **[1.0.0](https://github.com/Krkr8/RingConvert/releases/tag/v1.0.0)** ·
+[Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md)
 
 <p align="center">
   <img src="docs/screenshots/convert-ring.png" width="300" alt="The convert ring for a JPG, TIFF hovered">
@@ -31,7 +33,7 @@ Made for **Fedora 44 Workstation with GNOME 50 on Wayland**.
 
 ## Requirements
 
-- Fedora 44 Workstation, GNOME 50, Wayland session. Other distributions and desktops are untested;
+- Fedora 44 or 45 Workstation, GNOME 50 or 51, Wayland session. Other distributions and desktops are untested;
   KDE and X11 sessions aren't supported.
 - About 1 GB of disk for the conversion back ends, mostly LibreOffice, pandoc and the PyPI
   libraries.
@@ -42,7 +44,19 @@ Made for **Fedora 44 Workstation with GNOME 50 on Wayland**.
 
 ## Install
 
-Download or clone this repository, then run this from its folder:
+RingConvert has two parts: the **app**, which does the converting, and a small **GNOME Shell
+extension**, which opens the ring at the cursor when you press Shift during a drag. `install.sh`
+installs both.
+
+Get the code, either the latest release:
+
+```sh
+curl -L https://github.com/Krkr8/RingConvert/archive/refs/tags/v1.0.0.tar.gz | tar xz
+cd RingConvert-1.0.0
+```
+
+or a clone (`git clone https://github.com/Krkr8/RingConvert.git && cd RingConvert`). Put it
+somewhere you'll keep it, e.g. `~/Apps/RingConvert`, then run this from its folder:
 
 ```sh
 ./install.sh
@@ -68,6 +82,22 @@ Keep the folder where it is: the installed commands run the code from it. If you
 
 `./install.sh --user-only` reinstalls only the desktop parts, without dnf, pip or sudo. To use a
 different shortcut: `RINGCONVERT_SHORTCUT="<Super><Alt>r" ./install.sh --user-only`.
+
+### The extension on extensions.gnome.org
+
+The Shell extension is also listed on [extensions.gnome.org](https://extensions.gnome.org) and in
+the **Extension Manager** app as *RingConvert*. On its own it does nothing: it needs the app from
+this repository. `install.sh` already installs the same extension, so you don't need both; if you
+do install it from there, it simply replaces the copy `install.sh` put in place.
+
+### Updating
+
+Download the new release (or `git pull` in your clone), run `./install.sh` again from its folder,
+then log out and back in so GNOME loads the new extension. Installs of 0.1.0 used different IDs
+(`io.github.ringconvert.RingConvert` and `ringconvert@ringconvert.github.io`); `install.sh` removes
+that old copy for you.
+
+### ffmpeg
 
 Fedora's own ffmpeg (`ffmpeg-free`) has no x264 encoder. For better H.264 output, enable
 [RPM Fusion](https://rpmfusion.org/Configuration); `install.sh` then offers to swap in its full
@@ -159,7 +189,7 @@ ringconvert --quit     # stop the background service
   wherever GNOME puts it.
 - **The extension needs a log-out:** GNOME Shell on Wayland can't load new or updated extension
   code while you're logged in. After installing or updating, log out and back in once.
-- The extension is built for GNOME 50 only. Other GNOME versions won't load it.
+- The extension is built for GNOME 50 and 51. Other GNOME versions won't load it.
 - Shift switches rings only during a drag, or while the ring itself has the keyboard focus.
 - The Files menu is hidden for folders, files that aren't on your disk, and selections of more than
   200 files.
@@ -167,8 +197,9 @@ ringconvert --quit     # stop the background service
   AVIF loses transparency.
 - PDF to DOCX keeps the text and layout as well as pdf2docx can; scanned PDFs have no text to
   extract.
-- The ring is black smoked glass in light and dark mode. `RINGCONVERT_THEME=warm` brings back
-  the original cream-peach ring with orange hover.
+- The ring and the tool windows are black smoked glass in light and dark mode.
+  `RINGCONVERT_THEME=warm` brings back the original cream-peach ring with orange hover (the tool
+  windows stay smoked).
 
 ## Uninstall
 
@@ -186,7 +217,7 @@ commands installed.
 ## Troubleshooting
 
 - **Shift does nothing while dragging:** check that the extension is loaded:
-  `gnome-extensions info ringconvert@ringconvert.github.io` should say it's enabled and active. If
+  `gnome-extensions info ringconvert@krkr8.github.io` should say it's enabled and active. If
   you installed it during this session, log out and back in. Its log lines are in
   `journalctl -b -o cat /usr/bin/gnome-shell | grep ringconvert`.
 - **No right-click menu:** `rpm -q nautilus-python`, then `nautilus -q` and open Files again.
@@ -200,12 +231,19 @@ commands installed.
 
   ```sh
   DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus \
-      gnome-extensions disable ringconvert@ringconvert.github.io
+      gnome-extensions disable ringconvert@krkr8.github.io
   ```
 
   Go back with Ctrl+Alt+F2 (or F1). If GNOME won't start at all, run this in the console instead,
   then log in again:
-  `mv ~/.local/share/gnome-shell/extensions/ringconvert@ringconvert.github.io ~/ringconvert-extension.off`
+  `mv ~/.local/share/gnome-shell/extensions/ringconvert@krkr8.github.io ~/ringconvert-extension.off`
+
+## Reporting a problem
+
+Open an [issue](https://github.com/Krkr8/RingConvert/issues) with your Fedora and GNOME versions
+(`gnome-shell --version`), the output of `ringconvert-cli --check`, and the steps that go wrong.
+For ring problems, the `RINGCONVERT_DEBUG=1` output from the troubleshooting list above helps most.
+Check it for file names you'd rather not share before posting.
 
 ## Development
 
@@ -219,7 +257,9 @@ RINGCONVERT_SHELL_TESTS=1 python3 -m pytest -q tests/test_shell_extension.py
 The tests generate their own sample files. The Shell extension tests run a private, headless
 GNOME Shell with its own D-Bus, settings and runtime folder, so nothing touches your session. The
 install tests run the scripts in a throwaway home folder; in test mode the scripts refuse to run
-without one. Step-by-step manual checks are in [TESTING.md](TESTING.md).
+without one. Step-by-step manual checks are in [TESTING.md](TESTING.md); how to contribute is in
+[CONTRIBUTING.md](CONTRIBUTING.md), and how a release is made in
+[docs/RELEASING.md](docs/RELEASING.md).
 
 ## Licence
 

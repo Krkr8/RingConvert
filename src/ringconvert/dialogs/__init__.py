@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""Tool dialogs: small warm floating panels.
+"""Tool dialogs: small smoked-glass floating panels, styled like the ring.
 
 `ToolDialog` gives the shared frame: a draggable header with a round close
 button at the top left and a centred title, a body, and a footer with Reset
-on the left and an orange primary button on the right.
+on the left and a bright-glass primary button on the right (colours: style.css).
 """
 
 from __future__ import annotations

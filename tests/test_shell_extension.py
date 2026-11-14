@@ -23,7 +23,7 @@ reason = available() or (None if os.environ.get("RINGCONVERT_SHELL_TESTS") == "1
                          else "set RINGCONVERT_SHELL_TESTS=1 to run a headless GNOME Shell")
 pytestmark = pytest.mark.skipif(bool(reason), reason=reason or "")
 
-APP_ID = "io.github.ringconvert.RingConvert"
+APP_ID = "io.github.krkr8.RingConvert"
 SECOND = (800, 600)  # second monitor, laid out right of the first
 SLACK = 30  # ring_widget.Geometry.margin: may hang off the work area
 RING = 460  # ring window size
@@ -80,7 +80,7 @@ def marks(shell):
     shell.input.button(False)
     shell.input.key("Shift_L", False)
     time.sleep(0.3)
-    shell.call(APP_ID, "/io/github/ringconvert/RingConvert", APP_ID, "Hide")
+    shell.call(APP_ID, "/io/github/krkr8/RingConvert", APP_ID, "Hide")
     time.sleep(0.5)
 
 

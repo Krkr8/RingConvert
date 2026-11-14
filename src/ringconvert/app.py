@@ -10,7 +10,7 @@
     ringconvert --quit     stop the running instance
 
 Single instance: later launches hand their options and files to the running
-one. The app also exports io.github.ringconvert.RingConvert on D-Bus (dbus.py)
+one. The app also exports io.github.krkr8.RingConvert on D-Bus (dbus.py)
 and is D-Bus activatable, so Show/ShowTools/Hide start it when needed.
 """
 

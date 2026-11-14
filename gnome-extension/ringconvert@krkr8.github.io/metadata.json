@@ -1,0 +1,11 @@
+{
+  "uuid": "ringconvert@krkr8.github.io",
+  "name": "RingConvert",
+  "description": "Drag a file and press Shift: a ring of formats opens at the cursor. Drop the file on a format to convert it, or press Shift again for the tools ring (compress, crop, redact, metadata and more).\n\nThis extension only places the ring at the pointer during a drag. It needs the RingConvert app, which does the converting: see the website for installation.",
+  "shell-version": [
+    "50",
+    "51"
+  ],
+  "url": "https://github.com/Krkr8/RingConvert",
+  "version-name": "1.0.0"
+}

@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+name: Feature request
+description: A new format, tool or way of working
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like RingConvert to do?
+      description: Which files, which result, and why it would help.
+    validations:
+      required: true

@@ -12,7 +12,7 @@ from gi.repository import Gdk, Gio, GObject, Gtk  # noqa: E402
 
 
 def main(path: str) -> int:
-    app = Gtk.Application(application_id="io.github.ringconvert.TestDragSource",
+    app = Gtk.Application(application_id="io.github.krkr8.TestDragSource",
                           flags=Gio.ApplicationFlags.NON_UNIQUE)
 
     def activate(_app):

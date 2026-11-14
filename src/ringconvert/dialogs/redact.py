@@ -24,6 +24,12 @@ Box = tuple[int, float, float, float, float]  # page, x, y, w, h (document units
 
 MIN_BOX = 3.0  # document units; smaller drags count as clicks
 
+# Overlay colours: placed boxes look like the result (near-black); the box
+# being dragged is see-through with a white outline, like the crop frame.
+BOX_FILL = (0.04, 0.035, 0.035)
+DRAG_FILL = (0.04, 0.035, 0.035, 0.55)
+DRAG_OUTLINE = (1.0, 1.0, 1.0, 0.95)
+
 
 def box_at(boxes: list[Box], page: int, x: float, y: float) -> int | None:
     """Index of the top-most box on `page` containing (x, y)."""
@@ -90,14 +96,14 @@ class RedactCanvas(DocCanvas):
         for page, x, y, w, h in self.boxes:
             if page == self.page:
                 cr.rectangle(x, y, w, h)
-        cr.set_source_rgb(0.04, 0.035, 0.035)
+        cr.set_source_rgb(*BOX_FILL)
         cr.fill()
         if self._current:
             _p, x, y, w, h = self._current
             cr.rectangle(x, y, w, h)
-            cr.set_source_rgba(0.04, 0.035, 0.035, 0.55)
+            cr.set_source_rgba(*DRAG_FILL)
             cr.fill_preserve()
-            cr.set_source_rgb(0.94, 0.33, 0.13)
+            cr.set_source_rgba(*DRAG_OUTLINE)
             cr.set_line_width(1.5 * unit)
             cr.stroke()
 

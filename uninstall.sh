@@ -40,9 +40,9 @@ fi
 
 say() { printf '\n\033[1;38;5;202m==>\033[0m \033[1m%s\033[0m\n' "$*"; }
 
-APP_ID=io.github.ringconvert.RingConvert
-OBJECT_PATH=/io/github/ringconvert/RingConvert
-EXT_UUID=ringconvert@ringconvert.github.io
+APP_ID=io.github.krkr8.RingConvert
+OBJECT_PATH=/io/github/krkr8/RingConvert
+EXT_UUID=ringconvert@krkr8.github.io
 DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 # Read once; `gsettings list-schemas | grep -q` can fail under pipefail.
@@ -73,6 +73,10 @@ if [[ -z ${RINGCONVERT_NO_START:-} ]]; then
         echo "    Not running."
     fi
 fi
+
+# shellcheck source=scripts/legacy-ids.sh
+source scripts/legacy-ids.sh
+remove_legacy_install  # an install from before 1.0.0, under the old IDs
 
 say "GNOME Shell extension"
 EXT_DIR="$DATA_HOME/gnome-shell/extensions/$EXT_UUID"

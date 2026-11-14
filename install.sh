@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: GPL-3.0-or-later
-# RingConvert installer for Fedora 44 Workstation.
+# RingConvert installer for Fedora Workstation (GNOME 50 or 51).
 #
 # Run as your normal user (NOT with sudo): it asks for your password only
 # for the dnf step. Safe to re-run.
@@ -89,7 +89,7 @@ fi
 fi  # USER_ONLY
 
 BIN="$HOME/.local/bin/ringconvert"
-APP_ID=io.github.ringconvert.RingConvert
+APP_ID=io.github.krkr8.RingConvert
 # Read once; `gsettings list-schemas | grep -q` can fail under pipefail.
 SCHEMAS=$(gsettings list-schemas 2>/dev/null) || true
 has_schema() { grep -qx "$1" <<<"$SCHEMAS"; }
@@ -101,6 +101,9 @@ fi
 say "Installing the desktop file, icon and D-Bus activation (~/.local/share)"
 DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+# shellcheck source=scripts/legacy-ids.sh
+source scripts/legacy-ids.sh
+remove_legacy_install  # an install from before 1.0.0, under the old IDs
 install -Dm644 data/$APP_ID.desktop "$DATA_HOME/applications/$APP_ID.desktop"
 install -Dm644 data/icons/hicolor/scalable/apps/$APP_ID.svg \
     "$DATA_HOME/icons/hicolor/scalable/apps/$APP_ID.svg"
@@ -153,7 +156,7 @@ else
 fi
 
 say "GNOME Shell extension (drag a file, press Shift)"
-EXT_UUID=ringconvert@ringconvert.github.io
+EXT_UUID=ringconvert@krkr8.github.io
 EXT_DIR="$DATA_HOME/gnome-shell/extensions/$EXT_UUID"
 EXT_NEW=1
 [[ -f $EXT_DIR/metadata.json ]] && EXT_NEW=0

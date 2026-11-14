@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 """The app's D-Bus interface, used by the GNOME Shell extension and scripts.
 
-    io.github.ringconvert.RingConvert  (on the app's bus name and object path)
+    io.github.krkr8.RingConvert  (on the app's bus name and object path)
       Show(i x, i y)       show the convert ring
       ShowTools(i x, i y)  the same for the tools ring
       Hide()               close the ring
@@ -14,9 +14,9 @@ Apps can't place windows on Wayland: the Shell extension moves every new ring
 window, to the (x, y) of its own Show call or else to the cursor (so x, y from
 other callers are not honoured).
 
-Try it:  gdbus call --session --dest io.github.ringconvert.RingConvert \\
-           --object-path /io/github/ringconvert/RingConvert \\
-           --method io.github.ringconvert.RingConvert.Show 0 0
+Try it:  gdbus call --session --dest io.github.krkr8.RingConvert \\
+           --object-path /io/github/krkr8/RingConvert \\
+           --method io.github.krkr8.RingConvert.Show 0 0
 """
 
 from __future__ import annotations
@@ -30,7 +30,7 @@ from gi.repository import Gio, GLib  # noqa: E402
 
 from .debug import debug  # noqa: E402
 
-INTERFACE = "io.github.ringconvert.RingConvert"
+INTERFACE = "io.github.krkr8.RingConvert"
 
 XML = f"""
 <node>

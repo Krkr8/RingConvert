@@ -10,18 +10,74 @@ window.ringconvert-ring.background {
 }
 
 /* ------------------------------------------------------------------ dialogs
- * Warm floating panels: amber header fading into a
- * peach body, dark text, compact controls, orange primary button. Colours are
- * fixed so the panels keep their warm look in dark mode too.
+ * Smoked-glass panels that match the ring (ring_widget.SMOKE): a near-black
+ * panel with a white hairline edge, graphite controls like the petals, light
+ * text, and the ring's monochrome hover (bright glass, dark text) for the
+ * selected option and the primary action. No accent colour: the colours are
+ * fixed, so the panels look the same in light and dark mode. Every colour is a
+ * token below; the rules only use var(--rc-…).
  */
+window.ringconvert-dialog,
+popover.annotate-text {
+  /* Panel: the ring's disc, opaque (no compositor blur behind dialogs). */
+  --rc-panel-top: #1a1a1d;
+  --rc-panel-bottom: #0d0d0f;
+  --rc-panel-edge: rgba(255, 255, 255, 0.16);   /* hairline round the panel */
+  --rc-panel-glint: rgba(255, 255, 255, 0.07);  /* top inner highlight */
+  --rc-shadow: rgba(0, 0, 0, 0.55);
+  --rc-band: rgba(255, 255, 255, 0.025);        /* header/footer tint */
+  --rc-rule: rgba(255, 255, 255, 0.07);         /* hairline separators */
+  --rc-well: rgba(0, 0, 0, 0.32);               /* recessed areas: preview, fields, lists */
+  --rc-well-edge: rgba(255, 255, 255, 0.09);
+  --rc-swatch-edge: rgba(255, 255, 255, 0.2);   /* keeps a black swatch visible */
+  /* Text: the ring's labels. */
+  --rc-text: #f2f2f2;
+  --rc-text-dim: rgba(242, 242, 242, 0.72);     /* captions, ≥ 8:1 on the panel */
+  --rc-text-faint: rgba(242, 242, 242, 0.58);   /* notes, units, tag groups, ≥ 5:1 */
+  /* Controls: graphite petals. */
+  --rc-graphite-top: #2c2c31;
+  --rc-graphite-bottom: #1c1c20;
+  --rc-graphite-hover-top: #38383e;
+  --rc-graphite-hover-bottom: #26262b;
+  --rc-graphite-press: #18181b;
+  --rc-graphite-glint: rgba(255, 255, 255, 0.08);
+  --rc-graphite-edge: rgba(0, 0, 0, 0.6);
+  /* Selected / primary: the ring's hover, bright glass with dark text. */
+  --rc-glass-top: #f4f4f5;
+  --rc-glass-bottom: #d4d4d8;
+  --rc-glass-hover-top: #ffffff;
+  --rc-glass-hover-bottom: #e2e2e6;
+  --rc-glass-press-top: #d4d4d8;
+  --rc-glass-press-bottom: #c4c4c9;
+  --rc-glass-sheen: rgba(255, 255, 255, 0.7);
+  --rc-glass-text: #111113;
+  --rc-disabled-fill: rgba(255, 255, 255, 0.07);
+  --rc-disabled-text: rgba(242, 242, 242, 0.38);
+  /* Sliders: white like the ring's progress arc. */
+  --rc-trough: rgba(255, 255, 255, 0.14);
+  --rc-fill: #f4f4f5;
+  /* Keyboard focus and text selection. */
+  --rc-focus: rgba(244, 244, 245, 0.75);
+  --rc-selection: rgba(244, 244, 245, 0.28);
+  /* The colour-picker swatch: a hue wheel (content, not chrome). */
+  --rc-hue-1: #eb5757;
+  --rc-hue-2: #f2c94c;
+  --rc-hue-3: #6fcf97;
+  --rc-hue-4: #2f80ed;
+  --rc-hue-5: #9b51e0;
+}
+
 window.ringconvert-dialog {
   border-radius: 16px;
-  color: #3a2a22;
-  background-color: #fbcdb7;
+  color: var(--rc-text);
+  background-color: var(--rc-panel-bottom);
+  box-shadow: 0 0 0 1px var(--rc-shadow), 0 14px 36px var(--rc-shadow);
 }
 .ringconvert-dialog .dialog-panel {
-  background-color: #fbc8ae;
-  background-image: linear-gradient(180deg, #fcc468 0px, #fbb487 64px, #fabd9f 240px, #fac6ae 100%);
+  border-radius: 16px;
+  background-color: var(--rc-panel-bottom);
+  background-image: linear-gradient(180deg, var(--rc-panel-top), var(--rc-panel-bottom));
+  box-shadow: inset 0 0 0 1px var(--rc-panel-edge), inset 0 1px var(--rc-panel-glint);
 }
 
 .ringconvert-dialog .dialog-header {
@@ -29,10 +85,49 @@ window.ringconvert-dialog {
   padding: 0 12px;
 }
 
+/* Bold uppercase, like the ring's labels. */
 .ringconvert-dialog .dialog-title {
   font-weight: 700;
-  font-size: 15px;
-  color: #3a2a22;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--rc-text);
+}
+
+/* Graphite controls: close, Reset, icon buttons, image swatch. */
+.ringconvert-dialog button.dialog-close,
+.ringconvert-dialog button.dialog-secondary,
+.ringconvert-dialog button.dialog-icon,
+.ringconvert-dialog button.swatch-image {
+  color: var(--rc-text);
+  background-color: var(--rc-graphite-bottom);
+  background-image: linear-gradient(180deg, var(--rc-graphite-top), var(--rc-graphite-bottom));
+  box-shadow: inset 0 1px var(--rc-graphite-glint), 0 0 0 1px var(--rc-graphite-edge);
+}
+.ringconvert-dialog button.dialog-close:hover,
+.ringconvert-dialog button.dialog-secondary:hover,
+.ringconvert-dialog button.dialog-icon:hover,
+.ringconvert-dialog button.swatch-image:hover {
+  background-image: linear-gradient(180deg, var(--rc-graphite-hover-top), var(--rc-graphite-hover-bottom));
+}
+.ringconvert-dialog button.dialog-close:active,
+.ringconvert-dialog button.dialog-secondary:active,
+.ringconvert-dialog button.dialog-icon:active,
+.ringconvert-dialog button.swatch-image:active {
+  background-image: none;
+  background-color: var(--rc-graphite-press);
+}
+
+/* Keyboard focus: a light ring just outside the control. */
+.ringconvert-dialog button:focus-visible,
+.ringconvert-dialog .segmented > button:focus-visible {
+  outline: 2px solid var(--rc-focus);
+  outline-offset: 1px;
+}
+.ringconvert-dialog selection,
+popover.annotate-text selection {
+  background-color: var(--rc-selection);
+  color: var(--rc-text);
 }
 
 .ringconvert-dialog button.dialog-close {
@@ -40,18 +135,14 @@ window.ringconvert-dialog {
   min-height: 26px;
   padding: 0;
   border-radius: 999px;
-  background: alpha(#7a3a1a, 0.12);
-  color: #3a2a22;
-  box-shadow: none;
   -gtk-icon-size: 12px;
 }
-.ringconvert-dialog button.dialog-close:hover { background: alpha(#7a3a1a, 0.22); }
 
 .ringconvert-dialog .preview-well {
   padding: 18px 16px;
-  background: alpha(#ffffff, 0.14);
-  border-top: 1px solid alpha(#7a3a1a, 0.08);
-  border-bottom: 1px solid alpha(#7a3a1a, 0.08);
+  background-color: var(--rc-well);
+  border-top: 1px solid var(--rc-graphite-edge);
+  border-bottom: 1px solid var(--rc-rule);
 }
 
 .ringconvert-dialog .bg-preview { border-radius: 10px; }
@@ -62,18 +153,19 @@ window.ringconvert-dialog {
 .ringconvert-dialog .dialog-row { min-height: 34px; }
 .ringconvert-dialog .dialog-caption {
   font-size: 13px;
-  color: alpha(#3a2a22, 0.82);
+  color: var(--rc-text-dim);
 }
 .ringconvert-dialog .slider-value {
   font-size: 12px;
   font-feature-settings: "tnum";
-  color: alpha(#3a2a22, 0.75);
+  color: var(--rc-text-dim);
 }
 
 .ringconvert-dialog .dialog-footer {
   padding: 10px 14px 12px;
-  border-top: 1px solid alpha(#7a3a1a, 0.10);
-  background: alpha(#ffffff, 0.10);
+  border-top: 1px solid var(--rc-rule);
+  background-color: var(--rc-band);
+  border-radius: 0 0 16px 16px;
 }
 
 .ringconvert-dialog button.dialog-secondary,
@@ -82,27 +174,37 @@ window.ringconvert-dialog {
   padding: 2px 14px;
   border-radius: 7px;
   font-size: 13px;
+}
+.ringconvert-dialog button.dialog-secondary { font-weight: 600; }
+
+/* The primary action: bright glass, like a hovered petal. */
+.ringconvert-dialog button.dialog-primary {
+  font-weight: 700;
+  color: var(--rc-glass-text);
+  background-color: var(--rc-glass-bottom);
+  background-image: linear-gradient(180deg, var(--rc-glass-top), var(--rc-glass-bottom));
+  box-shadow: inset 0 1px var(--rc-glass-sheen), 0 1px 3px var(--rc-shadow);
+}
+.ringconvert-dialog button.dialog-primary:hover {
+  background-image: linear-gradient(180deg, var(--rc-glass-hover-top), var(--rc-glass-hover-bottom));
+}
+.ringconvert-dialog button.dialog-primary:active {
+  background-image: linear-gradient(180deg, var(--rc-glass-press-top), var(--rc-glass-press-bottom));
   box-shadow: none;
 }
-.ringconvert-dialog button.dialog-secondary {
-  background: alpha(#7a3a1a, 0.12);
-  color: alpha(#3a2a22, 0.85);
+.ringconvert-dialog button.dialog-primary:disabled {
+  color: var(--rc-disabled-text);
+  background-image: none;
+  background-color: var(--rc-disabled-fill);
+  box-shadow: none;
 }
-.ringconvert-dialog button.dialog-secondary:hover { background: alpha(#7a3a1a, 0.2); }
-.ringconvert-dialog button.dialog-primary {
-  font-weight: 600;
-  color: #ffffff;
-  background-image: linear-gradient(180deg, #f2622f, #e8462a);
-  box-shadow: 0 1px 2px alpha(#7a2a0a, 0.3);
-}
-.ringconvert-dialog button.dialog-primary:hover { background-image: linear-gradient(180deg, #f67040, #ec5030); }
-.ringconvert-dialog button.dialog-primary:active { background-image: linear-gradient(180deg, #e04424, #d63c20); }
 
-/* Segmented control: a tinted track, the active option a solid orange pill. */
+/* Segmented control: a recessed track, the active option a bright-glass pill. */
 .ringconvert-dialog .segmented {
   padding: 2px;
   border-radius: 8px;
-  background: alpha(#7a3a1a, 0.13);
+  background-color: var(--rc-well);
+  box-shadow: inset 0 0 0 1px var(--rc-well-edge);
 }
 .ringconvert-dialog .segmented > button {
   min-height: 22px;
@@ -111,133 +213,139 @@ window.ringconvert-dialog {
   margin: 0;
   border-radius: 6px;
   font-size: 12px;
-  color: alpha(#3a2a22, 0.85);
+  font-weight: 600;
+  color: var(--rc-text-dim);
   background: none;
   box-shadow: none;
 }
-.ringconvert-dialog .segmented > button:hover { background: alpha(#ffffff, 0.25); }
+.ringconvert-dialog .segmented > button:hover {
+  color: var(--rc-text);
+  background-color: var(--rc-graphite-top);
+}
 /* Hairline separators between options, hidden next to the active one. */
 .ringconvert-dialog .segmented > button:not(:first-child) {
-  box-shadow: inset 1px 0 alpha(#7a3a1a, 0.18);
+  box-shadow: inset 1px 0 var(--rc-rule);
 }
 .ringconvert-dialog .segmented > button:checked + button { box-shadow: none; }
 .ringconvert-dialog .segmented > button:checked {
-  color: #ffffff;
-  font-weight: 600;
-  background: #e8462a;
-  box-shadow: 0 1px 2px alpha(#7a2a0a, 0.3);
+  color: var(--rc-glass-text);
+  font-weight: 700;
+  background-color: var(--rc-glass-bottom);
+  background-image: linear-gradient(180deg, var(--rc-glass-top), var(--rc-glass-bottom));
+  box-shadow: inset 0 1px var(--rc-glass-sheen), 0 1px 2px var(--rc-shadow);
 }
 
-/* Numeric fields (crop W/H): small white rounded boxes. */
-.ringconvert-dialog entry.num-field {
+/* Numeric and search fields: small recessed boxes. */
+.ringconvert-dialog entry.num-field,
+popover.annotate-text entry.num-field {
   min-height: 24px;
   padding: 0 8px;
   border-radius: 6px;
-  background: alpha(#ffffff, 0.85);
-  color: #3a2a22;
-  box-shadow: inset 0 0 0 1px alpha(#7a3a1a, 0.12);
-  outline-color: alpha(#e8462a, 0.6);
+  background-color: var(--rc-well);
+  color: var(--rc-text);
+  caret-color: var(--rc-text);
+  box-shadow: inset 0 0 0 1px var(--rc-well-edge);
+  outline-color: var(--rc-focus);
 }
+.ringconvert-dialog entry.num-field > image { color: var(--rc-text-dim); }
+.ringconvert-dialog entry.num-field > text > placeholder { color: var(--rc-text-faint); }
 
-/* Sliders: orange fill on a pale track, white knob. */
+/* Sliders: a white fill on a faint track, bright-glass knob. */
 .ringconvert-dialog scale { padding: 8px 0; }
 .ringconvert-dialog scale trough {
   min-height: 4px;
   border-radius: 2px;
-  background: alpha(#ffffff, 0.6);
+  background-color: var(--rc-trough);
 }
 .ringconvert-dialog scale highlight {
   border-radius: 2px;
-  background: #e8462a;
+  background-color: var(--rc-fill);
 }
 .ringconvert-dialog scale slider {
   min-width: 18px;
   min-height: 18px;
   margin: -8px;
   border-radius: 999px;
-  background: #fffaf6;
-  box-shadow: 0 1px 3px alpha(#5a2a0a, 0.35);
+  background-color: var(--rc-glass-bottom);
+  background-image: linear-gradient(180deg, var(--rc-glass-hover-top), var(--rc-glass-bottom));
+  box-shadow: 0 1px 3px var(--rc-shadow), 0 0 0 1px var(--rc-graphite-edge);
   outline: none;
 }
+.ringconvert-dialog scale:focus-visible slider {
+  box-shadow: 0 0 0 2px var(--rc-panel-bottom), 0 0 0 4px var(--rc-focus);
+}
+.ringconvert-dialog scale marks indicator { color: var(--rc-text-faint); }
 
-/* Background swatches. */
+/* Swatches (background and pen colours). */
 .ringconvert-dialog button.swatch {
   min-width: 28px;
   min-height: 28px;
   padding: 0;
   border-radius: 7px;
-  box-shadow: inset 0 0 0 1px alpha(#000000, 0.08);
+  box-shadow: inset 0 0 0 1px var(--rc-swatch-edge);
 }
 .ringconvert-dialog button.swatch.selected {
-  box-shadow: 0 0 0 2px #fac2a8, 0 0 0 4px alpha(#3a2a22, 0.85);
-}
-.ringconvert-dialog button.swatch-image {
-  background: alpha(#ffffff, 0.55);
-  color: #3a2a22;
+  box-shadow: 0 0 0 2px var(--rc-panel-bottom), 0 0 0 4px var(--rc-glass-top);
 }
 .ringconvert-dialog button.swatch-color {
   min-width: 40px;
   border-radius: 999px;
-  background-image: conic-gradient(#e8462a, #f2c94c, #6fcf97, #2f80ed, #9b51e0, #e8462a);
+  background-image: conic-gradient(var(--rc-hue-1), var(--rc-hue-2), var(--rc-hue-3),
+                                   var(--rc-hue-4), var(--rc-hue-5), var(--rc-hue-1));
 }
 .ringconvert-dialog button.swatch-color.custom,
 .ringconvert-dialog button.swatch-color.picked { background-image: none; }
 
-/* Small icon buttons (rotate, flip, undo, page arrows). */
+/* Small icon buttons (rotate, flip, undo, page arrows, aspect lock). */
 .ringconvert-dialog button.dialog-icon {
   min-width: 28px;
   min-height: 26px;
   padding: 0 6px;
   border-radius: 7px;
-  color: #3a2a22;
-  background: alpha(#7a3a1a, 0.12);
+}
+.ringconvert-dialog button.dialog-icon:checked {
+  color: var(--rc-glass-text);
+  background-color: var(--rc-glass-bottom);
+  background-image: linear-gradient(180deg, var(--rc-glass-top), var(--rc-glass-bottom));
+  box-shadow: inset 0 1px var(--rc-glass-sheen);
+}
+.ringconvert-dialog button.dialog-icon:disabled {
+  color: var(--rc-disabled-text);
+  background-image: none;
+  background-color: var(--rc-disabled-fill);
   box-shadow: none;
 }
-.ringconvert-dialog button.dialog-icon:hover { background: alpha(#7a3a1a, 0.2); }
-.ringconvert-dialog button.dialog-icon:checked {
-  color: #ffffff;
-  background: #e8462a;
-}
-.ringconvert-dialog button.dialog-icon:disabled { opacity: 0.45; }
-.ringconvert-dialog separator { background: alpha(#7a3a1a, 0.15); margin: 3px 2px; }
+.ringconvert-dialog separator { background-color: var(--rc-rule); margin: 3px 2px; }
 
 .ringconvert-dialog .dialog-note {
   font-size: 12px;
-  color: alpha(#3a2a22, 0.7);
-}
-.ringconvert-dialog button.dialog-primary:disabled {
-  color: alpha(#ffffff, 0.8);
-  background-image: linear-gradient(180deg, alpha(#f2622f, 0.45), alpha(#e8462a, 0.45));
-  box-shadow: none;
+  color: var(--rc-text-faint);
 }
 .ringconvert-dialog .page-nav { margin-top: 2px; }
 
-/* Metadata list: a white card with hairline rows. */
+/* Metadata list: a recessed card with hairline rows. */
 .ringconvert-dialog .meta-file { font-weight: 700; font-size: 14px; }
 .ringconvert-dialog .tag-scroller {
   border-radius: 10px;
-  background: alpha(#ffffff, 0.6);
-  box-shadow: inset 0 0 0 1px alpha(#7a3a1a, 0.1);
+  background-color: var(--rc-well);
+  box-shadow: inset 0 0 0 1px var(--rc-well-edge);
 }
-.ringconvert-dialog list.tag-list { background: none; color: #3a2a22; }
+.ringconvert-dialog list.tag-list { background: none; color: var(--rc-text); }
 .ringconvert-dialog list.tag-list > row { padding: 0; }
-.ringconvert-dialog list.tag-list > row:not(:last-child) { border-bottom: 1px solid alpha(#7a3a1a, 0.08); }
+.ringconvert-dialog list.tag-list > row:not(:last-child) { border-bottom: 1px solid var(--rc-rule); }
 .ringconvert-dialog .tag-row { padding: 6px 12px; }
 .ringconvert-dialog .tag-name { font-weight: 600; font-size: 12px; }
-.ringconvert-dialog .tag-group { font-size: 11px; color: alpha(#3a2a22, 0.55); }
-.ringconvert-dialog .tag-value { font-size: 12px; color: alpha(#3a2a22, 0.9); }
+.ringconvert-dialog .tag-group { font-size: 11px; color: var(--rc-text-faint); }
+.ringconvert-dialog .tag-value { font-size: 12px; color: var(--rc-text-dim); }
 .ringconvert-dialog list.tag-list > label { padding: 24px; }
 
-/* The text popover in Annotate. */
+/* The text popover in Annotate: a small graphite panel. */
 popover.annotate-text > contents {
   padding: 6px;
   border-radius: 10px;
-  background: #fbd3bd;
-  color: #3a2a22;
+  color: var(--rc-text);
+  background-color: var(--rc-panel-top);
+  box-shadow: inset 0 0 0 1px var(--rc-panel-edge), 0 6px 18px var(--rc-shadow);
 }
-popover.annotate-text entry.num-field {
-  min-height: 26px;
-  border-radius: 6px;
-  background: #ffffff;
-  color: #3a2a22;
-}
+popover.annotate-text > arrow { background-color: var(--rc-panel-top); border-color: var(--rc-panel-edge); }
+popover.annotate-text entry.num-field { min-height: 26px; }

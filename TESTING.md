@@ -11,13 +11,13 @@ If the desktop freezes or misbehaves at any point:
 2. Run:
    ```sh
    DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus \
-       gnome-extensions disable ringconvert@ringconvert.github.io
+       gnome-extensions disable ringconvert@krkr8.github.io
    ```
 3. Press **Ctrl+Alt+F2** (or **F1**) to get back to the desktop.
 
 If GNOME won't start at all, run this in that console instead, then log in again:
 ```sh
-mv ~/.local/share/gnome-shell/extensions/ringconvert@ringconvert.github.io ~/ringconvert-extension.off
+mv ~/.local/share/gnome-shell/extensions/ringconvert@krkr8.github.io ~/ringconvert-extension.off
 ```
 
 ## 0. Automated checks (optional)
@@ -35,9 +35,12 @@ Expected: everything passes. Some tests may be skipped when an optional backend 
    Expected: it ends with **Done.** and a short list of next steps. In the "Backend check" every
    line has a ✓, except `pillow avif`, which says "optional" (avifenc does that job).
 2. **Log out and log back in.** This loads the Shell extension.
-3. Run `gnome-extensions info ringconvert@ringconvert.github.io`.
+3. Run `gnome-extensions info ringconvert@krkr8.github.io`.
    Expected: it says the extension is enabled and its state is ACTIVE.
 4. Run `nautilus -q`, then open Files again. This loads the right-click menu.
+5. Run `gnome-extensions list | grep ringconvert`.
+   Expected: only `ringconvert@krkr8.github.io`. (An older 0.1.0 install,
+   `ringconvert@ringconvert.github.io`, is removed by `install.sh`.)
 
 ## 2. Drag + Shift (Shell extension)
 
@@ -112,7 +115,7 @@ Use a folder with a test picture in it, e.g. copy one into `~/Pictures/rc-test/`
 
 ## Reporting a problem
 
-Send:
+Open an [issue](https://github.com/Krkr8/RingConvert/issues/new/choose) and attach:
 - the output of `journalctl -b -o cat /usr/bin/gnome-shell | grep ringconvert` (Shell extension)
 - for the ring or the menu, a trace from the app: run `ringconvert --quit`, then
   `RINGCONVERT_DEBUG=1 ringconvert --service`, repeat the problem, and copy what it printed. Stop it

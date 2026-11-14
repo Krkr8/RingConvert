@@ -16,7 +16,7 @@ GLib = pytest.importorskip("gi.repository.GLib")
 Gtk = pytest.importorskip("gi.repository.Gtk")
 
 ROOT = Path(__file__).resolve().parent.parent
-INTERFACE = "io.github.ringconvert.RingConvert"
+INTERFACE = "io.github.krkr8.RingConvert"
 
 try:
     BUS = Gio.bus_get_sync(Gio.BusType.SESSION, None)
@@ -27,7 +27,7 @@ pytestmark = pytest.mark.skipif(BUS is None or not Gtk.init_check(), reason="nee
 
 @pytest.fixture(params=["--service"])
 def service(request, tmp_path):
-    app_id = f"io.github.ringconvert.Test{os.getpid()}"
+    app_id = f"io.github.krkr8.Test{os.getpid()}"
     env = dict(os.environ, RINGCONVERT_APP_ID=app_id, RINGCONVERT_DEBUG="1",
                PYTHONPATH=str(ROOT / "src"))
     log = tmp_path / "service.log"

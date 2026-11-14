@@ -20,6 +20,8 @@ from ..core import imageops, pdf  # noqa: E402
 from ..core.detect import detect  # noqa: E402
 from . import icon_button, preview_copy, to_surface  # noqa: E402
 
+PAGE_SHADOW = (0.0, 0.0, 0.0, 0.5)  # RGBA under the page, offset (1, 2) px
+
 
 class Pages:
     def __init__(self, path: Path, preview_px: int = 1100):
@@ -163,8 +165,8 @@ class DocCanvas(Gtk.DrawingArea):
         surface = self.pages.surface(self.page)
         cr.save()
         cr.translate(ox, oy)
-        # A soft shadow so a white page stands out from the panel.
-        cr.set_source_rgba(0.3, 0.12, 0.04, 0.18)
+        # A soft shadow so the page sits on the dark panel.
+        cr.set_source_rgba(*PAGE_SHADOW)
         cr.rectangle(1, 2, w * s, h * s)
         cr.fill()
         k = w * s / surface.get_width()

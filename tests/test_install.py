@@ -18,8 +18,8 @@ import pytest
 from ringconvert.core.detect import _MIME_FORMATS
 
 ROOT = Path(__file__).resolve().parent.parent
-APP_ID = "io.github.ringconvert.RingConvert"
-UUID = "ringconvert@ringconvert.github.io"
+APP_ID = "io.github.krkr8.RingConvert"
+UUID = "ringconvert@krkr8.github.io"
 KEY_PATH = "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/ringconvert/"
 OTHER_KEY = "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
 
@@ -85,10 +85,10 @@ def home(tmp_path):
 
 
 OURS = [
-    "data/applications/io.github.ringconvert.RingConvert.desktop",
-    "data/icons/hicolor/scalable/apps/io.github.ringconvert.RingConvert.svg",
-    "data/dbus-1/services/io.github.ringconvert.RingConvert.service",
-    "config/autostart/io.github.ringconvert.RingConvert.desktop",
+    "data/applications/io.github.krkr8.RingConvert.desktop",
+    "data/icons/hicolor/scalable/apps/io.github.krkr8.RingConvert.svg",
+    "data/dbus-1/services/io.github.krkr8.RingConvert.service",
+    "config/autostart/io.github.krkr8.RingConvert.desktop",
     "data/nautilus-python/extensions/ringconvert-nautilus.py",
     f"data/gnome-shell/extensions/{UUID}/extension.js",
     f"data/gnome-shell/extensions/{UUID}/metadata.json",
@@ -155,6 +155,37 @@ def test_install_reenables_a_disabled_extension(home):
     home.run("gsettings", "set", "org.gnome.shell", "disabled-extensions", f"['{UUID}', 'old@example.com']")
     home.run("./install.sh", "--user-only")
     assert home.get("org.gnome.shell", "disabled-extensions") == "['old@example.com']"
+
+
+LEGACY_APP_ID = "io.github.ringconvert.RingConvert"
+LEGACY_UUID = "ringconvert@ringconvert.github.io"
+LEGACY = [
+    f"data/applications/{LEGACY_APP_ID}.desktop",
+    f"data/icons/hicolor/scalable/apps/{LEGACY_APP_ID}.svg",
+    f"data/dbus-1/services/{LEGACY_APP_ID}.service",
+    f"config/autostart/{LEGACY_APP_ID}.desktop",
+    f"data/gnome-shell/extensions/{LEGACY_UUID}/extension.js",
+    f"data/gnome-shell/extensions/{LEGACY_UUID}/metadata.json",
+]
+
+
+@needs_gsettings
+@pytest.mark.parametrize("script", ["./install.sh", "./uninstall.sh"])
+def test_scripts_remove_a_pre_1_0_install(home, script):
+    base = home.config.parent
+    before = tree(base)
+    for rel in LEGACY:
+        (base / rel).parent.mkdir(parents=True, exist_ok=True)
+        (base / rel).write_text("old\n")
+    home.run("gsettings", "set", "org.gnome.shell", "enabled-extensions",
+             f"['ding@rastersoft.com', '{LEGACY_UUID}']")
+    home.run(script, "--user-only")
+    for rel in LEGACY:
+        assert not (base / rel).exists(), rel
+    expected = f"['ding@rastersoft.com', '{UUID}']" if script == "./install.sh" else "['ding@rastersoft.com']"
+    assert home.get("org.gnome.shell", "enabled-extensions") == expected
+    home.run("./uninstall.sh", "--user-only")
+    assert tree(base) == before
 
 
 REAL_HOME = Path(pwd.getpwuid(os.getuid()).pw_dir)

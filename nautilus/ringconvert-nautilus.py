@@ -28,7 +28,7 @@ except ImportError:  # Files' Python may not see the user's site-packages: use t
     sys.path.insert(0, "@RINGCONVERT_SRC@")  # install.sh fills this in
     from ringconvert.core.detect import common_targets, common_tools, detect, label
 
-APP_ID = os.environ.get("RINGCONVERT_APP_ID", "io.github.ringconvert.RingConvert")
+APP_ID = os.environ.get("RINGCONVERT_APP_ID", "io.github.krkr8.RingConvert")
 OBJECT_PATH = "/" + APP_ID.replace(".", "/")
 # Mirrors ring_window: dialogs that edit one file at a time.
 SINGLE_FILE_TOOLS = {"crop", "edit", "annotate", "redact"}
@@ -80,7 +80,7 @@ def call_app(method: str, uris: list[str], name: str) -> None:
     except GLib.Error as exc:
         print(f"ringconvert-nautilus: no session bus: {exc.message}", file=sys.stderr, flush=True)
         return
-    bus.call(APP_ID, OBJECT_PATH, "io.github.ringconvert.RingConvert", method,
+    bus.call(APP_ID, OBJECT_PATH, "io.github.krkr8.RingConvert", method,
              GLib.Variant("(ass)", (uris, name)), None, Gio.DBusCallFlags.NONE,
              CALL_TIMEOUT_MS, None, done)
 

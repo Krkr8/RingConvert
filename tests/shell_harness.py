@@ -30,7 +30,7 @@ gi.require_version("Gio", "2.0")
 from gi.repository import Gio, GLib  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-UUID = "ringconvert@ringconvert.github.io"
+UUID = "ringconvert@krkr8.github.io"
 EXTENSION = ROOT / "gnome-extension" / UUID
 WIDTH, HEIGHT = 1280, 800
 BTN_LEFT = 0x110
@@ -89,7 +89,10 @@ class HeadlessShell:
         enabled = "[" + ", ".join(f"'{e}'" for e in self.extensions) + "]" if self.extensions else "@as []"
         (self.workdir / "config/glib-2.0/settings/keyfile").write_text(
             f"[org/gnome/shell]\nenabled-extensions={enabled}\n"
-            "welcome-dialog-last-shown-version='999'\n")
+            "welcome-dialog-last-shown-version='999'\n"
+            # The hot corner's pressure barriers at (0, 0) eat parts of the
+            # first relative motions out of the corner the pointer is pinned to.
+            "[org/gnome/desktop/interface]\nenable-hot-corners=false\n")
         self.env = {k: v for k, v in os.environ.items()
                     if k not in ("DISPLAY", "WAYLAND_DISPLAY", "DBUS_SESSION_BUS_ADDRESS",
                                  "XDG_SESSION_ID", "GNOME_SETUP_DISPLAY")}
@@ -242,6 +245,7 @@ class RemoteInput:
         (self.path,) = self._call("/org/gnome/Mutter/RemoteDesktop", REMOTE_DESKTOP, "CreateSession")
         self._session("Start")
         self.x = self.y = 0.0
+        self._keys: set[str] = set()  # keysyms held down
         # No absolute motion without a screencast stream: pin the pointer in the
         # top-left corner, then track it ourselves.
         self._session("NotifyPointerMotionRelative", (-100000, -100000), "(dd)")
@@ -267,7 +271,11 @@ class RemoteInput:
         self._session("NotifyPointerButton", (button, pressed), "(ib)")
 
     def key(self, name: str, pressed: bool) -> None:
+        # Mutter 51 refuses to release a key that isn't down ("Invalid key event").
+        if not pressed and name not in self._keys:
+            return
         self._session("NotifyKeyboardKeysym", (KEYSYMS[name], pressed), "(ub)")
+        (self._keys.add if pressed else self._keys.discard)(name)
 
     def tap(self, name: str, hold: float = 0.15) -> None:
         self.key(name, True)

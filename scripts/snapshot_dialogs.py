@@ -49,7 +49,7 @@ def main() -> int:
     tools = sys.argv[3:] or list(DIALOGS)
     out.mkdir(parents=True, exist_ok=True)
     app = RingConvertApp()
-    app.set_application_id("io.github.ringconvert.Snapshot")
+    app.set_application_id("io.github.krkr8.Snapshot")
     pending = list(tools)
     status = {"code": 0}
 

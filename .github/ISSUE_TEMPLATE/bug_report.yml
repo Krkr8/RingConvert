@@ -1,0 +1,38 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+name: Bug report
+description: Something doesn't work as described in the README
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: The steps you took, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: System
+      description: Distribution and version, plus the output of `gnome-shell --version`.
+      placeholder: Fedora 45, GNOME Shell 51.1, Wayland
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: RingConvert version
+      placeholder: "1.0.0"
+  - type: textarea
+    id: check
+    attributes:
+      label: Output of `ringconvert-cli --check`
+      render: text
+  - type: textarea
+    id: log
+    attributes:
+      label: Debug output (for ring problems)
+      description: >
+        Run `ringconvert --quit`, then `RINGCONVERT_DEBUG=1 ringconvert --service`, repeat the
+        problem and paste what it prints. Remove file names you'd rather not share.
+      render: text

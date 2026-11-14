@@ -1,5 +1,5 @@
 [D-BUS Service]
 # SPDX-License-Identifier: GPL-3.0-or-later
-Name=io.github.ringconvert.RingConvert
+Name=io.github.krkr8.RingConvert
 # install.sh rewrites the path to the installed command.
 Exec=ringconvert --gapplication-service

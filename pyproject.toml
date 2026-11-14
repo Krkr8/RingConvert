@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ringconvert"
-version = "0.1.0"
+version = "1.0.0"
 description = "Drag a file, press Shift, drop it on a format: a radial file converter for GNOME"
 readme = "README.md"
 license = "GPL-3.0-or-later"

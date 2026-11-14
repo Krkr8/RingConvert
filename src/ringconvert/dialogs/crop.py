@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""Crop Image dialog: orange crop box with corner and edge
+"""Crop Image dialog: white crop box with corner and edge
 handles over a darkened image, aspect-ratio presets, W/H fields in px."""
 
 from __future__ import annotations
@@ -18,7 +18,11 @@ from . import Segmented, ToolDialog, preview_copy, row, to_surface  # noqa: E402
 from . import cropmath  # noqa: E402
 
 RATIOS = ["Free", "1:1", "16:9", "9:16", "4:3", "3:4"]
-ORANGE = (0.94, 0.33, 0.13)
+# Overlay colours (RGBA), monochrome like the ring: a white frame and handles
+# with a faint dark edge (visible on white images), a smoky mask outside.
+FRAME = (1.0, 1.0, 1.0, 0.95)
+FRAME_EDGE = (0.0, 0.0, 0.0, 0.45)
+MASK = (0.03, 0.03, 0.04, 0.6)
 
 CURSORS = {"move": "move", "n": "n-resize", "s": "s-resize", "e": "e-resize", "w": "w-resize",
            "nw": "nw-resize", "ne": "ne-resize", "sw": "sw-resize", "se": "se-resize"}
@@ -141,11 +145,11 @@ class CropView(Gtk.DrawingArea):
         cr.set_fill_rule(cairo.FILL_RULE_EVEN_ODD)
         cr.rectangle(ox, oy, img_w, img_h)
         cr.rectangle(x, y, w, h)
-        cr.set_source_rgba(0.12, 0.1, 0.1, 0.55)
+        cr.set_source_rgba(*MASK)
         cr.fill()
         cr.set_fill_rule(cairo.FILL_RULE_WINDING)
 
-        cr.set_source_rgb(*ORANGE)
+        cr.set_source_rgba(*FRAME)
         cr.set_line_width(1.5)
         cr.rectangle(x + 0.75, y + 0.75, w - 1.5, h - 1.5)
         cr.stroke()
@@ -159,7 +163,11 @@ class CropView(Gtk.DrawingArea):
         bar = min(18.0, h / 4)
         cr.rectangle(x - thick / 2, y + h / 2 - bar / 2, thick, bar)
         cr.rectangle(x + w - thick / 2, y + h / 2 - bar / 2, thick, bar)
-        cr.fill()
+        cr.set_source_rgba(*FRAME)
+        cr.fill_preserve()
+        cr.set_source_rgba(*FRAME_EDGE)
+        cr.set_line_width(1.0)
+        cr.stroke()
 
 
 class SizeField(Gtk.Entry):

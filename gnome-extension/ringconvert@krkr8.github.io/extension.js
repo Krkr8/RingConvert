@@ -29,9 +29,9 @@ import Shell from 'gi://Shell';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
 
-const APP_ID = 'io.github.ringconvert.RingConvert';
-const OBJECT_PATH = '/io/github/ringconvert/RingConvert';
-const INTERFACE = 'io.github.ringconvert.RingConvert';
+const APP_ID = 'io.github.krkr8.RingConvert';
+const OBJECT_PATH = '/io/github/krkr8/RingConvert';
+const INTERFACE = 'io.github.krkr8.RingConvert';
 const RING_TITLES = {convert: 'RingConvert', tools: 'RingConvert Tools'};
 
 const POLL_MS = 40;
@@ -75,7 +75,7 @@ export default class RingConvertExtension extends Extension {
             this.disable();
             throw e;
         }
-        console.log('[ringconvert] enabled');
+        debug('enabled');
     }
 
     _connectAll() {
@@ -122,7 +122,7 @@ export default class RingConvertExtension extends Extension {
         this._ring = null;
         this._request = null;
         this._dragging = false;
-        console.log('[ringconvert] disabled');
+        debug('disabled');
     }
 
     // ------------------------------------------------------------ helpers
